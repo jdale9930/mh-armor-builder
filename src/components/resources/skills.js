@@ -118,6 +118,7 @@ let skills = [
 "Rec Level",
 "Rec Speed",
 "Lasting Pwr",
+"Wide-Range",
 "Hunger",
 "Gluttony",
 "Eating",
