@@ -127,6 +127,7 @@ let skills = [
 "Mycology",
 "Botany",
 "Combo Rate",
+"Combo Plus",
 "Speed Setup",
 "Gathering",
 "Honey",
