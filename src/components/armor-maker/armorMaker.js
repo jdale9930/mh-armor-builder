@@ -79,7 +79,7 @@ const ArmorMaker = () =>{
                 Skill 1
                 <select value = {skill1} onChange = {(evt)=>{setSkill1(evt.target.value)}}>
                     <option value = ""></option>
-                    {skills.map((v)=><option value = {v}>{v}</option>)}
+                    {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
                 <input type ="text" value = {skill1Val} onChange ={(evt)=>{setSkill1Val(evt.target.value)}}></input>
                 <button onClick ={()=>{setSkill1(""); setSkill1Val("")}}>Clear Skill 1</button>
@@ -89,7 +89,7 @@ const ArmorMaker = () =>{
                 Skill 2
                 <select value = {skill2} onChange = {(evt)=>{setSkill2(evt.target.value)}}>
                     <option value = ""></option>
-                    {skills.map((v)=><option value = {v}>{v}</option>)}
+                    {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
                 <input type ="text" value = {skill2Val} onChange ={(evt)=>{setSkill2Val(evt.target.value)}}></input>
                 <button onClick ={()=>{setSkill2(""); setSkill2Val("")}}>Clear Skill 2</button>
@@ -99,7 +99,7 @@ const ArmorMaker = () =>{
                 Skill 3
                 <select value = {skill3} onChange = {(evt)=>{setSkill3(evt.target.value)}}>
                     <option value = ""></option>
-                    {skills.map((v)=><option value = {v}>{v}</option>)}
+                    {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
                 <input type ="text" value = {skill3Val} onChange ={(evt)=>{setSkill3Val(evt.target.value)}}></input>
                 <button onClick ={()=>{setSkill3(""); setSkill3Val("")}}>Clear Skill 3</button>
@@ -109,7 +109,7 @@ const ArmorMaker = () =>{
                 Skill 4
                 <select value = {skill4} onChange = {(evt)=>{setSkill4(evt.target.value)}}>
                     <option value = ""></option>
-                    {skills.map((v)=><option value = {v}>{v}</option>)}
+                    {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
                 <input type ="text" value = {skill4Val} onChange ={(evt)=>{setSkill4Val(evt.target.value)}}></input>
                 <button onClick ={()=>{setSkill4(""); setSkill4Val("")}}>Clear Skill 4</button>

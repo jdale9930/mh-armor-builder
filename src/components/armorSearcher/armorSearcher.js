@@ -1,5 +1,7 @@
 import {React, useState} from "react"
 import "./armorSearcher.css"
+import axios from "axios"
+import ArmorDisplay from "../armorDisplay/armorDisplay"
 
 const ArmorSearcher = () => {
     const [name, setName] = useState("")
@@ -7,6 +9,17 @@ const ArmorSearcher = () => {
     const [skill, setSkill] = useState("")
     const [armorType, setType] = useState("")
     const [armorClass, setClass] = useState("")
+    const [searchResults, setSearchResults] = useState([])
+    async function searchArmor(){
+        
+        if(name != 0)
+        {
+            let results = await axios.get(`/armor/byName/${name}`)
+            console.log(results.data.data)
+            setSearchResults(results.data.data)
+        }
+    }
+
     return(
         <div>
             <div className = "searchBox">
@@ -23,7 +36,7 @@ const ArmorSearcher = () => {
                 </div>
 
                 <div>
-                    Slots:
+                    Minimum Slots:
                     <select value = {slots} onChange ={(evt)=>{setSlots(evt.target.value)}}>
                         <option value = "0">0</option>
                         <option value = "1">1</option>
@@ -31,7 +44,7 @@ const ArmorSearcher = () => {
                         <option value = "3">3</option>
                     </select>
                     Type:
-                    <select value = {slots} onChange ={(evt)=>{setSlots(evt.target.value)}}>
+                    <select value = {slots} onChange ={(evt)=>{setType(evt.target.value)}}>
                         <option value = ""></option>
                         <option value = "Head">Head</option>
                         <option value = "Torso">Torso</option>
@@ -40,15 +53,17 @@ const ArmorSearcher = () => {
                         <option value = "Legs">Legs</option>
                     </select>
                 </div>
-                <button onClick = {()=>{
-                    if(name != 0)
-                    {
-                        
-                    }
-                }}>Submit</button>
+                <button onClick = {()=>{searchArmor()}}>Submit</button>
             </div>
             <iframe>
-
+                {searchResults.length > 0 && 
+                searchResults.map((v)=>
+                <ArmorDisplay
+                key = {v.armor_id}
+                name = {v.name}
+                type = {v.type}
+                class = {v.class}
+                />)}
             </iframe>
         </div>
     )

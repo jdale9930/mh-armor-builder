@@ -5,8 +5,11 @@ const ArmorDisplay = (props) => {
     return(
         <div>
             <div>
-                <img src={"/images/" + props.type}></img>
+                <img src={"/images/" + props.type + ".png"}></img>
+                {props.name}
             </div>
         </div>
     )
 }
+
+export default ArmorDisplay;

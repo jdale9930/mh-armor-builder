@@ -1,0 +1,14 @@
+.armorDisplay{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.armorIcon{
+    height: 75px;
+    width: 75px;
+}
+
+.setBuilderMain{
+    display: flex;
+    flex-flow: row wrap;
+}

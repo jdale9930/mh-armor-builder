@@ -39,7 +39,7 @@ const DecorationMaker = () =>{
                 Skill 1
                 <select value = {skill1} onChange = {(evt)=>{setSkill1(evt.target.value)}}>
                     <option value = ""></option>
-                    {skills.map((v)=><option value = {v}>{v}</option>)}
+                    {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
                 <input type ="text" value = {skill1Val} onChange ={(evt)=>{setSkill1Val(evt.target.value)}}></input>
                 <button onClick ={()=>{setSkill1(""); setSkill1Val("")}}>Clear Skill 1</button>
@@ -49,7 +49,7 @@ const DecorationMaker = () =>{
                 Skill 2
                 <select value = {skill2} onChange = {(evt)=>{setSkill2(evt.target.value)}}>
                     <option value = ""></option>
-                    {skills.map((v)=><option value = {v}>{v}</option>)}
+                    {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
                 <input type ="text" value = {skill2Val} onChange ={(evt)=>{setSkill2Val(evt.target.value)}}></input>
                 <button onClick ={()=>{setSkill2(""); setSkill2Val("")}}>Clear Skill 2</button>
