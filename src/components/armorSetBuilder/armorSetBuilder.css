@@ -1,6 +1,7 @@
 .armorDisplay{
     display: flex;
     flex-flow: column wrap;
+    flex-basis: 40%;
 }
 
 .armorIcon{

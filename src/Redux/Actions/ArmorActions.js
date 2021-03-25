@@ -1,23 +1,25 @@
-export const EQUIP_HEAD = "Equip head";
-export const UNEQUIP_HEAD = "Unequip head";
-export const EQUIP_TORSO = "Equip torso";
-export const UNEQUIP_TORSO = "Unequip torso";
-export const EQUIP_ARMS = "Equip arms";
-export const UNEQUIP_ARMS = "Unequip arms";
-export const EQUIP_WAIST = "Equip waist";
-export const UNEQUIP_WAIST = "Unquip waist";
-export const EQUIP_LEGS = "Equip legs";
-export const UNEQUIP_LEGS = "Unequip legs";
-export const EQUIP_TALISMAN = "Equip talisman";
-export const UNEQUIP_TALISMAN = "Unequip talisman";
+// export const EQUIP_HEAD = "Equip head";
+// export const UNEQUIP_HEAD = "Unequip head";
+// export const EQUIP_TORSO = "Equip torso";
+// export const UNEQUIP_TORSO = "Unequip torso";
+// export const EQUIP_ARMS = "Equip arms";
+// export const UNEQUIP_ARMS = "Unequip arms";
+// export const EQUIP_WAIST = "Equip waist";
+// export const UNEQUIP_WAIST = "Unquip waist";
+// export const EQUIP_LEGS = "Equip legs";
+// export const UNEQUIP_LEGS = "Unequip legs";
+// export const EQUIP_TALISMAN = "Equip talisman";
+// export const UNEQUIP_TALISMAN = "Unequip talisman";
+export const EQUIP_ARMOR = "Equip armor";
+export const UNEQUIP_ARMOR = "Unequip armor";
 export const CLEAR_ARMOR = "Clear armor";
 
 export function equipArmor(armor, piece){
-    return{type: EQUIP_HEAD, armor: armor, piece: piece}
+    return{type: EQUIP_ARMOR, armor: armor, piece: piece}
 }
 
 export function unequipArmor(piece){
-    return{type: UNEQUIP_HEAD, piece: piece}
+    return{type: UNEQUIP_ARMOR, piece: piece}
 }
 
 // export function equipTorso(torso){

@@ -15,7 +15,7 @@ const ArmorSetBuilder = () => {
                 <div className = "armorDisplay">
                     <div>
                         <img className = "armorIcon" src="/images/Head.png" alt = "Helmet"/>
-                        
+                        {/* {headState === "None" ? :} */}
                     </div>
                     <img className = "armorIcon" src="/images/Torso.png" alt = "Chest"/>
                     <img className = "armorIcon" src="/images/Arms.png" alt = "Arm"/>

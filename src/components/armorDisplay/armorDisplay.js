@@ -28,7 +28,7 @@ const ArmorDisplay = (props) => {
         <div className = "armorDisplayContainer">
             <div className = "armorInfoDisplay">
                 <div>
-                    <img src={"/images/" + props.type + ".png"}></img>
+                    <img src={"/images/" + props.type + ".png"}alt = {`${props.type}`}></img>
                 </div>
                 <div>
                     {props.name}
@@ -39,6 +39,7 @@ const ArmorDisplay = (props) => {
                 <div>
                     Slots: {slotsDisplay}
                 </div>
+                <button>Equip</button>
             </div>
             <div className = "skillDisplay">
                 {props.skill1 !== ":" && <div className = "skillRow">

@@ -10,7 +10,6 @@
     width: 190px;
     border-left: 1px solid black;
     border-right: 1px solid black;
-
 }
 
 .armorInfoDisplay{
@@ -25,14 +24,8 @@
     flex-flow: row wrap;
     border-bottom: 1px solid black;
     padding: 5px;
-    background-color: rgb(247, 247, 236);
 }
 
 .skillRow1{
     width: 160px;
-}
-
-.skillRow2{
-    text-align: right;
-    width: 18px;
 }

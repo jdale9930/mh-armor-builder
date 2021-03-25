@@ -4,9 +4,12 @@ import ArmorMaker from "./components/armor-maker/armorMaker"
 import DecorationMaker from "./components/decorationMaker/decorationMaker"
 import ArmorSetBuilder from "./components/armorSetBuilder/armorSetBuilder"
 import{Switch, Route, BrowserRouter, Redirect, NavLink, useHistory} from "react-router-dom"
+import {Provider} from "react-redux"
+import store from "./Redux/store"
 
 function App() {
   return (
+    <Provider store = {store}>
     <div>
     <BrowserRouter>
     <main>
@@ -24,6 +27,7 @@ function App() {
         </main>
     </BrowserRouter>
     </div>
+    </Provider>
   );
 }
 

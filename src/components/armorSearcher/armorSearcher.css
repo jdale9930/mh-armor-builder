@@ -1,9 +1,26 @@
 .searchBox{
+    display: flex;
+    flex-flow: row wrap;
     background-color: azure;
     color: black;
+    padding: 5px;
+    width: 520px;
 }
 
 .SearchDisplay{
     overflow-y: scroll;
     height: 400px;
+}
+
+.searchSpacer{
+    width: 150px;
+}
+
+.row{
+    display: flex;
+    flex-flow: row wrap;
+}
+.searchButton{
+    margin: 5px;
+    width: 207px;
 }

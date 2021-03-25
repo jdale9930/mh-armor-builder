@@ -8,7 +8,7 @@ const ArmorSearcher = () => {
     const [slots, setSlots] = useState("")
     const [skill, setSkill] = useState("")
     const [armorType, setType] = useState("")
-    const [armorClass, setClass] = useState("")
+    //const [armorClass, setClass] = useState("")
     const [searchResults, setSearchResults] = useState([])
     
     async function searchArmor(){
@@ -21,26 +21,27 @@ const ArmorSearcher = () => {
         <div>
             <div className = "searchBox">
                 <div>
-                    Search by Name: 
+                <div className = "row">
+                    <div className = "searchSpacer">Search by Name:</div>
                     <input type = "text" value = {name}
                     onChange = {(evt)=>{setName(evt.target.value)}}></input>
                 </div>
 
-                <div>
-                    Search by Skill: 
+                <div className = "row">
+                    <div className = "searchSpacer">Search by Skill: </div>
                     <input type = "text" value = {skill}
                     onChange = {(evt)=>{setSkill(evt.target.value)}}></input>
                 </div>
 
-                <div>
-                    Minimum Slots:
+                <div className = "row">
+                    <div style = {{width: "120px"}}>Minimum Slots:</div>
                     <select value = {slots} onChange ={(evt)=>{setSlots(evt.target.value)}}>
                         <option value = "0">0</option>
                         <option value = "1">1</option>
                         <option value = "2">2</option>
                         <option value = "3">3</option>
                     </select>
-                    Type:
+                    <div style ={{width: "78px", marginLeft: "20px"}}>Type:</div>
                     <select value = {armorType} onChange ={(evt)=>{setType(evt.target.value)}}>
                         <option value = ""></option>
                         <option value = "Head">Head</option>
@@ -50,7 +51,8 @@ const ArmorSearcher = () => {
                         <option value = "Legs">Legs</option>
                     </select>
                 </div>
-                <button onClick = {()=>{searchArmor()}}>Submit</button>
+                </div>
+                <button className = "searchButton" onClick = {()=>{searchArmor()}}>Search</button>
             </div>
             <div className = "SearchDisplay">
                 {searchResults.length > 0 && 
