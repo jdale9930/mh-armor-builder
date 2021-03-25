@@ -59,6 +59,7 @@ const ArmorSearcher = () => {
                 searchResults.map((v)=>
                 <ArmorDisplay
                 key = {v.armor_id}
+                none = {false}
                 name = {v.name}
                 type = {v.type}
                 class = {v.class}

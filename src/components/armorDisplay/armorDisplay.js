@@ -1,5 +1,7 @@
 import {React, useState, useEffect} from "react"
 import "./armorDisplay.css"
+import {connect} from "react-redux";
+import {equipArmor, unequipArmor, clearArmor} from "../../Redux/Actions"
 
 const ArmorDisplay = (props) => {
     const [skill1, setSkill1] = useState([]);
@@ -7,8 +9,10 @@ const ArmorDisplay = (props) => {
     const [skill3, setSkill3] = useState([]);
     const [skill4, setSkill4] = useState([]);
     const [slotsDisplay, setSlotsDisplay] = useState("---")
+    const [equipped, setEquipped] = useState()
     
     useEffect(()=>{
+        if(props.none === false){
             let splitSkill1 = props.skill1.split(":");
             setSkill1(splitSkill1)
             let splitSkill2 = props.skill2.split(":");
@@ -23,8 +27,20 @@ const ArmorDisplay = (props) => {
                 slotLine =slotLine.replace("-","0")
                 setSlotsDisplay(slotLine)
             }
-    },[])
-    return(
+    }},[])
+
+    useEffect(()=>{
+        if(props.headState !== props.name && props.torsoState !== props.name &&
+            props.armsState !== props.name && props.waistState !== props.name &&
+            props.legsState !== props.name){
+                setEquipped(true)
+            }
+        else{
+            setEquipped(false)
+        }
+    },[props.armor])
+    if(props.none === false)
+    {return(
         <div className = "armorDisplayContainer">
             <div className = "armorInfoDisplay">
                 <div>
@@ -39,7 +55,14 @@ const ArmorDisplay = (props) => {
                 <div>
                     Slots: {slotsDisplay}
                 </div>
-                <button>Equip</button>
+                
+                {equipped !== false ? <button onClick ={()=>{
+                    props.equipArmor(props.name, props.type);
+                    console.log(props.headState)
+                }}>Equip</button>:
+                <button onClick = {()=>{
+                    props.unequipArmor(props.type)
+                }}>Unequip</button>}
             </div>
             <div className = "skillDisplay">
                 {props.skill1 !== ":" && <div className = "skillRow">
@@ -83,7 +106,34 @@ const ArmorDisplay = (props) => {
                 </div>
             </div>
         </div>
-    )
+    )}
+    else{return(
+        <div className = "armorDisplayContainer">
+            <div className = "armorInfoDisplay">
+            </div>
+            <div className = "skillDisplay">
+            </div>
+            <div className = "skillDisplay">
+            </div>
+        </div>
+    )}
 }
 
-export default ArmorDisplay;
+function mapStateToProps(state){
+    return{
+        armor: state.armor,
+        headState: state.armor.Head,
+        torsoState: state.armor.Torso,
+        armsState: state.armor.Arms,
+        waistState: state.armor.Waist,
+        legsState: state.armor.Legs,
+        talismanState: state.armor.Talisman,
+    }
+}
+
+const mapDispatchToProps ={
+    equipArmor,
+    unequipArmor,
+    clearArmor
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ArmorDisplay);

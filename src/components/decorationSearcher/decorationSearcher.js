@@ -37,6 +37,7 @@ const DecorationSearcher = () => {
                 searchResults.map((v)=>
                 <DecorationDisplay
                 key = {v.decoration_id}
+                none = {false}
                 name = {v.name}
                 skill1 = {v.skill1}
                 skill2 = {v.skill2}
