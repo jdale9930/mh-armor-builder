@@ -2,3 +2,8 @@
     background-color: azure;
     color: black;
 }
+
+.SearchDisplay{
+    overflow-y: scroll;
+    height: 400px;
+}

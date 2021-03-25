@@ -10,14 +10,11 @@ const ArmorSearcher = () => {
     const [armorType, setType] = useState("")
     const [armorClass, setClass] = useState("")
     const [searchResults, setSearchResults] = useState([])
+    
     async function searchArmor(){
-        
-        if(name != 0)
-        {
-            let results = await axios.get(`/armor/byName/${name}`)
-            console.log(results.data.data)
+            let results = await axios.get(`/armor/search?name=${name}&skill=${skill}&slots=${slots}&type=${armorType}`)
+            console.log(results)
             setSearchResults(results.data.data)
-        }
     }
 
     return(
@@ -44,7 +41,7 @@ const ArmorSearcher = () => {
                         <option value = "3">3</option>
                     </select>
                     Type:
-                    <select value = {slots} onChange ={(evt)=>{setType(evt.target.value)}}>
+                    <select value = {armorType} onChange ={(evt)=>{setType(evt.target.value)}}>
                         <option value = ""></option>
                         <option value = "Head">Head</option>
                         <option value = "Torso">Torso</option>
@@ -55,7 +52,7 @@ const ArmorSearcher = () => {
                 </div>
                 <button onClick = {()=>{searchArmor()}}>Submit</button>
             </div>
-            <iframe>
+            <div className = "SearchDisplay">
                 {searchResults.length > 0 && 
                 searchResults.map((v)=>
                 <ArmorDisplay
@@ -63,8 +60,20 @@ const ArmorSearcher = () => {
                 name = {v.name}
                 type = {v.type}
                 class = {v.class}
+                skill1 = {v.skill1}
+                skill2 = {v.skill2}
+                skill3 = {v.skill3}
+                skill4 = {v.skill4}
+                defense = {v.defense}
+                fireRes = {v.fireRes}
+                waterRes = {v.waterRes}
+                thunderRes = {v.thunderRes}
+                iceRes = {v.iceRes}
+                dragonRes = {v.dragonRes}
+                slots = {v.slots}
+                rarity = {v.rarity}
                 />)}
-            </iframe>
+            </div>
         </div>
     )
 }

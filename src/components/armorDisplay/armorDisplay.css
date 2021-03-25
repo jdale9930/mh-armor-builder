@@ -1,0 +1,31 @@
+.armorDisplayContainer{
+    display: flex;
+    flex-flow: row wrap;
+    background-color:beige;
+    border: 2px solid black;
+    color: black;
+}
+
+.skillDisplay{
+    width: 180px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.armorInfoDisplay{
+    width: 120px;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    padding-left: 5px;
+}
+
+.skillRow{
+    display: flex;
+    flex-flow: row wrap;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.skillRow1{
+    width: 160px;
+}
