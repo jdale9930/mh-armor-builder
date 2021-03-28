@@ -2,45 +2,69 @@ import {React, useEffect, useState} from "react"
 import {connect} from "react-redux";
 import {equipArmor, unequipArmor, clearArmor} from "../../Redux/Actions"
 import ArmorDisplay from "../armorDisplay/armorDisplay"
+import DecorationDisplay from "../decorationDisplay/decorationDisplay"
 import axios from "axios"
 import "./setDisplay.css"
 
 const SetDisplay = (props) => {
-    const [headLocal, setHeadLocal] = useState({})
-    const [torsoLocal, setTorsoLocal] = useState({})
-    const [armsLocal, setArmsLocal] = useState({})
-    const [waistLocal, setWaistLocal] = useState({})
-    const [legsLocal, setLegsLocal] = useState({})
+    const [HeadDecoArray, setHeadDecoArray] = useState([])
+    const [headLocal, setHeadLocal] = useState({
+        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
+    const [torsoLocal, setTorsoLocal] = useState({
+        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
+    const [armsLocal, setArmsLocal] = useState({
+        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
+    const [waistLocal, setWaistLocal] = useState({
+        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
+    const [legsLocal, setLegsLocal] = useState({
+        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
 
     useEffect(()=>{
         axios.get(`/armor/search?name=${props.headState}&skill=%&slots=%&type=Head`)
         .then(response => setHeadLocal(response.data.data[0]))
-        .then(console.log(headLocal))
-        .then(console.log(headLocal.skill1))
+        // .then(console.log(headLocal))
+        // .then(console.log(headLocal.skill1))
     },[props.headState])
 
     useEffect(()=>{
         axios.get(`/armor/search?name=${props.torsoState}&skill=%&slots=%&type=Torso`)
         .then(response => setTorsoLocal(response.data.data[0]))
-        .then(console.log(headLocal))
-        .then(console.log(headLocal.skill1))
+        // .then(console.log(headLocal))
+        // .then(console.log(headLocal.skill1))
     },[props.torsoState])
 
-    // useEffect(()=>{
-    //     axios.get(`/armor/search?name=${props.armsState}&skill=%&slots=%&type=Arms`)
-    //     .then(response => setArmsLocal(response.data.data[0]))
-    // },[props.armsState])
+    useEffect(()=>{
+        axios.get(`/armor/search?name=${props.armsState}&skill=%&slots=%&type=Arms`)
+        .then(response => setArmsLocal(response.data.data[0]))
+    },[props.armsState])
 
-    // useEffect(()=>{
-    //     axios.get(`/armor/search?name=${props.waistState}&skill=%&slots=%&type=Waist`)
-    //     .then(response => setWaistLocal(response.data.data[0]))
-    // },[props.waistState])
+    useEffect(()=>{
+        axios.get(`/armor/search?name=${props.waistState}&skill=%&slots=%&type=Waist`)
+        .then(response => setWaistLocal(response.data.data[0]))
+    },[props.waistState])
 
-    // useEffect(()=>{
-    //     axios.get(`/armor/search?name=${props.legsState}&skill=%&slots=%&type=Legs`)
-    //     .then(response => setLegsLocal(response.data.data[0]))
-    // },[props.legsState])
+    useEffect(()=>{
+        axios.get(`/armor/search?name=${props.legsState}&skill=%&slots=%&type=Legs`)
+        .then(response => setLegsLocal(response.data.data[0]))
+    },[props.legsState])
     
+    useEffect(()=>{
+        setHeadDecoArray([])
+        for(let i = 0; i < props.HeadDecos.length; i++){
+            axios.get(`/decoration/search?name=${props.HeadDecos[i].deco}&skill=%`)
+            .then(response =>{
+                setHeadDecoArray([])
+                response.data.data.map((v) =>{
+                let decoInf = {
+                    name: response.data.data[0].name,
+                    skill1: response.data.data[0].skill1,
+                    skill2: response.data.data[0].skill2,
+                    slots: response.data.data[0].slots,}
+                    setHeadDecoArray([...HeadDecoArray, decoInf])
+                    console.log(HeadDecoArray)
+                })})
+            }
+        },[props.HeadDecos])
 
     return (
         <div>
@@ -67,6 +91,17 @@ const SetDisplay = (props) => {
                 rarity = {headLocal.rarity}
                 />}
                 </div>
+                <div className = "row">
+                {props.HeadDecos.length > 0 && HeadDecoArray.map((v) =>
+                    <DecorationDisplay
+                        name = {v.name}
+                        skill1 = {v.skill1}
+                        skill2 = {v.skill2}
+                        slots = {v.slots}
+                        location = "setDisplay"
+                    />
+                )}
+                </div>
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Torso.png" alt = "Torso"/>
                     {props.torsoState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
@@ -90,69 +125,69 @@ const SetDisplay = (props) => {
                 />}
                 </div>
                 <div className = "setRow">
-                    <img className = "armorIcon" src="/images/Arms.png" alt = "Helmet"/>
+                    <img className = "armorIcon" src="/images/Arms.png" alt = "Arms"/>
                     {props.armsState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
-                key = {headLocal.armor_id}
+                key = {armsLocal.armor_id}
                 none = {false}
-                name = {headLocal.name}
-                type = {headLocal.type}
-                class = {headLocal.class}
-                skill1 = {headLocal.skill1}
-                skill2 = {headLocal.skill2}
-                skill3 = {headLocal.skill3}
-                skill4 = {headLocal.skill4}
-                defense = {headLocal.defense}
-                fireRes = {headLocal.fireRes}
-                waterRes = {headLocal.waterRes}
-                thunderRes = {headLocal.thunderRes}
-                iceRes = {headLocal.iceRes}
-                dragonRes = {headLocal.dragonRes}
-                slots = {headLocal.slots}
-                rarity = {headLocal.rarity}
+                name = {armsLocal.name}
+                type = {armsLocal.type}
+                class = {armsLocal.class}
+                skill1 = {armsLocal.skill1}
+                skill2 = {armsLocal.skill2}
+                skill3 = {armsLocal.skill3}
+                skill4 = {armsLocal.skill4}
+                defense = {armsLocal.defense}
+                fireRes = {armsLocal.fireRes}
+                waterRes = {armsLocal.waterRes}
+                thunderRes = {armsLocal.thunderRes}
+                iceRes = {armsLocal.iceRes}
+                dragonRes = {armsLocal.dragonRes}
+                slots = {armsLocal.slots}
+                rarity = {armsLocal.rarity}
                 />}
                 </div>
                 <div className = "setRow">
-                    <img className = "armorIcon" src="/images/Waist.png" alt = "Helmet"/>
+                    <img className = "armorIcon" src="/images/Waist.png" alt = "Waist"/>
                     {props.waistState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
-                key = {headLocal.armor_id}
+                key = {waistLocal.armor_id}
                 none = {false}
-                name = {headLocal.name}
-                type = {headLocal.type}
-                class = {headLocal.class}
-                skill1 = {headLocal.skill1}
-                skill2 = {headLocal.skill2}
-                skill3 = {headLocal.skill3}
-                skill4 = {headLocal.skill4}
-                defense = {headLocal.defense}
-                fireRes = {headLocal.fireRes}
-                waterRes = {headLocal.waterRes}
-                thunderRes = {headLocal.thunderRes}
-                iceRes = {headLocal.iceRes}
-                dragonRes = {headLocal.dragonRes}
-                slots = {headLocal.slots}
-                rarity = {headLocal.rarity}
+                name = {waistLocal.name}
+                type = {waistLocal.type}
+                class = {waistLocal.class}
+                skill1 = {waistLocal.skill1}
+                skill2 = {waistLocal.skill2}
+                skill3 = {waistLocal.skill3}
+                skill4 = {waistLocal.skill4}
+                defense = {waistLocal.defense}
+                fireRes = {waistLocal.fireRes}
+                waterRes = {waistLocal.waterRes}
+                thunderRes = {waistLocal.thunderRes}
+                iceRes = {waistLocal.iceRes}
+                dragonRes = {waistLocal.dragonRes}
+                slots = {waistLocal.slots}
+                rarity = {waistLocal.rarity}
                 />}
                 </div>
                 <div className = "setRow">
-                    <img className = "armorIcon" src="/images/Head.png" alt = "Helmet"/>
+                    <img className = "armorIcon" src="/images/Legs.png" alt = "Legs"/>
                     {props.legsState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
-                key = {headLocal.armor_id}
+                key = {legsLocal.armor_id}
                 none = {false}
-                name = {headLocal.name}
-                type = {headLocal.type}
-                class = {headLocal.class}
-                skill1 = {headLocal.skill1}
-                skill2 = {headLocal.skill2}
-                skill3 = {headLocal.skill3}
-                skill4 = {headLocal.skill4}
-                defense = {headLocal.defense}
-                fireRes = {headLocal.fireRes}
-                waterRes = {headLocal.waterRes}
-                thunderRes = {headLocal.thunderRes}
-                iceRes = {headLocal.iceRes}
-                dragonRes = {headLocal.dragonRes}
-                slots = {headLocal.slots}
-                rarity = {headLocal.rarity}
+                name = {legsLocal.name}
+                type = {legsLocal.type}
+                class = {legsLocal.class}
+                skill1 = {legsLocal.skill1}
+                skill2 = {legsLocal.skill2}
+                skill3 = {legsLocal.skill3}
+                skill4 = {legsLocal.skill4}
+                defense = {legsLocal.defense}
+                fireRes = {legsLocal.fireRes}
+                waterRes = {legsLocal.waterRes}
+                thunderRes = {legsLocal.thunderRes}
+                iceRes = {legsLocal.iceRes}
+                dragonRes = {legsLocal.dragonRes}
+                slots = {legsLocal.slots}
+                rarity = {legsLocal.rarity}
                 />}
                 </div>
             </div>
@@ -169,6 +204,7 @@ function mapStateToProps(state){
         waistState: state.armor.Waist,
         legsState: state.armor.Legs,
         talismanState: state.armor.Talisman,
+        HeadDecos: state.deco.HeadDecos
     }
 }
 

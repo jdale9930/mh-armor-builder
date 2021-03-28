@@ -4,6 +4,7 @@
     background-color:beige;
     border: 2px solid black;
     color: black;
+    height: 100px;
 }
 
 .skillDisplay{
@@ -24,8 +25,10 @@
     display: flex;
     flex-flow: row wrap;
     border-bottom: 1px solid black;
-    padding: 5px;
+    /* padding: 2px; */
     background-color: rgb(247, 247, 236);
+    height: 9px;
+    line-height: 9px;
 }
 
 .skillRow1{
@@ -35,4 +38,14 @@
 .skillRow2{
     text-align: right;
     width: 18px;
+}
+
+.displayIcon{
+    width: 25px;
+    margin: auto;
+}
+
+.equipButton{
+    flex-basis: 70%;
+    margin:auto;
 }

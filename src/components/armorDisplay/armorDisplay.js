@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react"
 import "./armorDisplay.css"
 import {connect} from "react-redux";
-import {equipArmor, unequipArmor, clearArmor} from "../../Redux/Actions"
+import {equipArmor, unequipArmor, clearArmor, clearDecosFromPiece} from "../../Redux/Actions"
 
 const ArmorDisplay = (props) => {
     const [skill1, setSkill1] = useState([]);
@@ -27,7 +27,9 @@ const ArmorDisplay = (props) => {
                 slotLine =slotLine.replace("-","0")
                 setSlotsDisplay(slotLine)
             }
-    }},[])
+        }
+         //eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     useEffect(()=>{
         if(props.headState !== props.name && props.torsoState !== props.name &&
@@ -38,13 +40,23 @@ const ArmorDisplay = (props) => {
         else{
             setEquipped(false)
         }
+         //eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.armor])
     if(props.none === false)
     {return(
         <div className = "armorDisplayContainer">
             <div className = "armorInfoDisplay">
-                <div>
-                    <img src={"/images/" + props.type + ".png"}alt = {`${props.type}`}></img>
+                <div className = "row">
+                    <img className = "displayIcon" src={"/images/" + props.type + ".png"}alt = {`${props.type}`}></img>
+                    {equipped !== false ? <button className = "equipButton" onClick ={()=>{
+                    props.equipArmor(props.name, props.type);
+                    console.log(props.headState)
+                    }}>Equip</button>:
+                    <button className = "equipButton" onClick = {()=>{
+                    props.unequipArmor(props.type);
+                    props.clearDecosFromPiece(props.type);
+                    console.log(props.HeadDecos)
+                    }}>Unequip</button>}
                 </div>
                 <div>
                     {props.name}
@@ -56,13 +68,13 @@ const ArmorDisplay = (props) => {
                     Slots: {slotsDisplay}
                 </div>
                 
-                {equipped !== false ? <button onClick ={()=>{
+                {/* {equipped !== false ? <button onClick ={()=>{
                     props.equipArmor(props.name, props.type);
                     console.log(props.headState)
                 }}>Equip</button>:
                 <button onClick = {()=>{
                     props.unequipArmor(props.type)
-                }}>Unequip</button>}
+                }}>Unequip</button>} */}
             </div>
             <div className = "skillDisplay">
                 {props.skill1 !== ":" && <div className = "skillRow">
@@ -86,23 +98,23 @@ const ArmorDisplay = (props) => {
             <div className = "skillDisplay">
                 <div className = "skillRow">
                     <div className = "skillRow1">Fire Res:</div>
-                    <div>{props.fireRes}</div>
+                    <div className = "skillRow2">{props.fireRes}</div>
                 </div>
                 <div className = "skillRow">
                     <div className = "skillRow1">Water Res:</div>
-                    <div>{props.waterRes}</div>
+                    <div className = "skillRow2">{props.waterRes}</div>
                 </div>
                 <div className = "skillRow">
                     <div className = "skillRow1">Thunder Res:</div>
-                    <div>{props.thunderRes}</div>
+                    <div className = "skillRow2">{props.thunderRes}</div>
                 </div>
                 <div className = "skillRow">
                     <div className = "skillRow1">Ice Res:</div>
-                    <div>{props.iceRes}</div>
+                    <div className = "skillRow2">{props.iceRes}</div>
                 </div>
                 <div className = "skillRow"  style = {{borderBottom: "0px solid black"}}>
                     <div className = "skillRow1">Dragon Res:</div>
-                    <div>{props.dragonRes}</div>
+                    <div className = "skillRow2">{props.dragonRes}</div>
                 </div>
             </div>
         </div>
@@ -128,12 +140,14 @@ function mapStateToProps(state){
         waistState: state.armor.Waist,
         legsState: state.armor.Legs,
         talismanState: state.armor.Talisman,
+        HeadDecos: state.deco.HeadDecos
     }
 }
 
 const mapDispatchToProps ={
     equipArmor,
     unequipArmor,
-    clearArmor
+    clearArmor,
+    clearDecosFromPiece,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ArmorDisplay);

@@ -1,15 +1,3 @@
-// import {EQUIP_HEAD} from "../Actions";
-// import {UNEQUIP_HEAD} from "../Actions";
-// import {EQUIP_TORSO} from "../Actions";
-// import {UNEQUIP_TORSO} from "../Actions";
-// import {EQUIP_ARMS} from "../Actions";
-// import {UNEQUIP_ARMS} from "../Actions";
-// import {EQUIP_WAIST} from "../Actions";
-// import {UNEQUIP_WAIST} from "../Actions";
-// import {EQUIP_LEGS} from "../Actions";
-// import {UNEQUIP_LEGS} from "../Actions";
-// import {EQUIP_TALISMAN} from "../Actions";
-// import {UNEQUIP_TALISMAN} from "../Actions";
 import {CLEAR_ARMOR} from "../Actions"
 import {EQUIP_ARMOR} from "../Actions";
 import {UNEQUIP_ARMOR} from "../Actions";

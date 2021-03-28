@@ -10,7 +10,7 @@ const DecorationSearcher = () => {
     
     async function searchDecoration(){
             let results = await axios.get(`/decoration/search?name=${name}&skill=${skill}`)
-            console.log(results)
+            //console.log(results)
             setSearchResults(results.data.data)
     }
 

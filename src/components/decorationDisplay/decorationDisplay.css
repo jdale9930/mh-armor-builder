@@ -12,6 +12,12 @@
     border-right: 1px solid black;
 }
 
+.skillDisplaySet{
+    width: 140px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
 .armorInfoDisplay{
     width: 120px;
     border-right: 1px solid black;
@@ -28,4 +34,29 @@
 
 .skillRow1{
     width: 160px;
+}
+
+.skillRow1Set{
+    width: 110px;
+}
+
+.decorationPic{
+    width: 25px;
+}
+
+.decorationDisplaySet{
+    background-color:rgb(250, 250, 236);
+    border: 2px solid black;
+    color: black;
+    width: 152px
+}
+
+.armorInfoSet{
+    width: 120px;
+    padding-left: 5px;
+}
+
+.equipButton{
+    flex-basis: 70%;
+    margin: auto;
 }
