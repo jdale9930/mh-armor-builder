@@ -8,6 +8,11 @@ import "./setDisplay.css"
 
 const SetDisplay = (props) => {
     const [HeadDecoArray, setHeadDecoArray] = useState([])
+    const [TorsoDecoArray, setTorsoDecoArray] = useState([])
+    const [ArmsDecoArray, setArmsDecoArray] = useState([])
+    const [WaistDecoArray, setWaistDecoArray] = useState([])
+    const [LegsDecoArray, setLegsDecoArray] = useState([])
+
     const [headLocal, setHeadLocal] = useState({
         name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
     const [torsoLocal, setTorsoLocal] = useState({
@@ -64,8 +69,83 @@ const SetDisplay = (props) => {
                     console.log(HeadDecoArray)
                 })})
             }
+            //eslint-disable-next-line react-hooks/exhaustive-deps
         },[props.HeadDecos])
 
+        useEffect(()=>{
+            setTorsoDecoArray([])
+            for(let i = 0; i < props.TorsoDecos.length; i++){
+                axios.get(`/decoration/search?name=${props.TorsoDecos[i].deco}&skill=%`)
+                .then(response =>{
+                    setTorsoDecoArray([])
+                    response.data.data.map((v) =>{
+                    let decoInf = {
+                        name: response.data.data[0].name,
+                        skill1: response.data.data[0].skill1,
+                        skill2: response.data.data[0].skill2,
+                        slots: response.data.data[0].slots,}
+                        setTorsoDecoArray([...TorsoDecoArray, decoInf])
+                        console.log(TorsoDecoArray)
+                    })})
+                }
+                //eslint-disable-next-line react-hooks/exhaustive-deps
+            },[props.TorsoDecos])
+        
+        useEffect(()=>{
+            setArmsDecoArray([])
+            for(let i = 0; i < props.ArmsDecos.length; i++){
+                axios.get(`/decoration/search?name=${props.ArmsDecos[i].deco}&skill=%`)
+                .then(response =>{
+                    setArmsDecoArray([])
+                    response.data.data.map((v) =>{
+                    let decoInf = {
+                        name: response.data.data[0].name,
+                        skill1: response.data.data[0].skill1,
+                        skill2: response.data.data[0].skill2,
+                        slots: response.data.data[0].slots,}
+                        setArmsDecoArray([...ArmsDecoArray, decoInf])
+                        console.log(ArmsDecoArray)
+                    })})
+                    }
+                    //eslint-disable-next-line react-hooks/exhaustive-deps
+                },[props.ArmsDecos])
+
+            useEffect(()=>{
+                setWaistDecoArray([])
+                for(let i = 0; i < props.WaistDecos.length; i++){
+                    axios.get(`/decoration/search?name=${props.WaistDecos[i].deco}&skill=%`)                        .then(response =>{
+                        setWaistDecoArray([])
+                        response.data.data.map((v) =>{
+                        let decoInf = {
+                            name: response.data.data[0].name,
+                            skill1: response.data.data[0].skill1,
+                            skill2: response.data.data[0].skill2,
+                            slots: response.data.data[0].slots,}
+                            setWaistDecoArray([...WaistDecoArray, decoInf])
+                            console.log(WaistDecoArray)
+                        })})
+                    }
+                        //eslint-disable-next-line react-hooks/exhaustive-deps
+                },[props.WaistDecos])
+
+            useEffect(()=>{
+                setLegsDecoArray([])
+                for(let i = 0; i < props.LegsDecos.length; i++){
+                    axios.get(`/decoration/search?name=${props.LegsDecos[i].deco}&skill=%`)                        .then(response =>{
+                        setLegsDecoArray([])
+                        response.data.data.map((v) =>{
+                        let decoInf = {
+                            name: response.data.data[0].name,
+                            skill1: response.data.data[0].skill1,
+                            skill2: response.data.data[0].skill2,
+                            slots: response.data.data[0].slots,}
+                            setLegsDecoArray([...LegsDecoArray, decoInf])
+                            console.log(LegsDecoArray)
+                        })})
+                    }
+                        //eslint-disable-next-line react-hooks/exhaustive-deps
+                },[props.LegsDecos])
+    
     return (
         <div>
             <div className = "armorDisplay">
@@ -99,6 +179,8 @@ const SetDisplay = (props) => {
                         skill2 = {v.skill2}
                         slots = {v.slots}
                         location = "setDisplay"
+                        type = "Head"
+                         key = {v.name}
                     />
                 )}
                 </div>
@@ -124,6 +206,19 @@ const SetDisplay = (props) => {
                 rarity = {torsoLocal.rarity}
                 />}
                 </div>
+                <div className = "row">
+                {props.TorsoDecos.length > 0 && TorsoDecoArray.map((v) =>
+                    <DecorationDisplay
+                        name = {v.name}
+                        skill1 = {v.skill1}
+                        skill2 = {v.skill2}
+                        slots = {v.slots}
+                        location = "setDisplay"
+                        key = {v.name}
+                        type = "Torso"
+                    />
+                )}
+                </div>
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Arms.png" alt = "Arms"/>
                     {props.armsState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
@@ -145,6 +240,19 @@ const SetDisplay = (props) => {
                 slots = {armsLocal.slots}
                 rarity = {armsLocal.rarity}
                 />}
+                </div>
+                <div className = "row">
+                {props.ArmsDecos.length > 0 && ArmsDecoArray.map((v) =>
+                    <DecorationDisplay
+                        name = {v.name}
+                        skill1 = {v.skill1}
+                        skill2 = {v.skill2}
+                        slots = {v.slots}
+                        location = "setDisplay"
+                        key = {v.name}
+                        type = "Arms"
+                    />
+                )}
                 </div>
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Waist.png" alt = "Waist"/>
@@ -168,6 +276,19 @@ const SetDisplay = (props) => {
                 rarity = {waistLocal.rarity}
                 />}
                 </div>
+                <div className = "row">
+                {props.WaistDecos.length > 0 && WaistDecoArray.map((v) =>
+                    <DecorationDisplay
+                        name = {v.name}
+                        skill1 = {v.skill1}
+                        skill2 = {v.skill2}
+                        slots = {v.slots}
+                        location = "setDisplay"
+                        key = {v.name}
+                        type = "Waist"
+                    />
+                )}
+                </div>
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Legs.png" alt = "Legs"/>
                     {props.legsState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
@@ -190,6 +311,19 @@ const SetDisplay = (props) => {
                 rarity = {legsLocal.rarity}
                 />}
                 </div>
+                </div>
+                <div className = "row">
+                {props.LegsDecos.length > 0 && LegsDecoArray.map((v) =>
+                    <DecorationDisplay
+                        name = {v.name}
+                        skill1 = {v.skill1}
+                        skill2 = {v.skill2}
+                        slots = {v.slots}
+                        location = "setDisplay"
+                        key = {v.name}
+                        type = "Legs"
+                    />
+                )}
             </div>
         </div>
     )
@@ -204,7 +338,11 @@ function mapStateToProps(state){
         waistState: state.armor.Waist,
         legsState: state.armor.Legs,
         talismanState: state.armor.Talisman,
-        HeadDecos: state.deco.HeadDecos
+        HeadDecos: state.deco.HeadDecos,
+        TorsoDecos: state.deco.TorsoDecos,
+        ArmsDecos: state.deco.ArmsDecos,
+        WaistDecos: state.deco.WaistDecos,
+        LegsDecos: state.deco.LegsDecos,
     }
 }
 

@@ -7,9 +7,21 @@ import axios from "axios"
 const DecorationDisplay = (props) => {
     const [skill1, setSkill1] = useState([]);
     const [skill2, setSkill2] = useState([]);
-    const [decoValid, setDecoValid] = useState()
-    const [slotCount, setSlotCount] = useState(0)
-    const [armorSlots, setArmorSlots] = useState("")
+    const [headValid, setHeadValid] = useState()
+    const [torsoValid, setTorsoValid] = useState()
+    const [armsValid, setArmsValid] = useState()
+    const [waistValid, setWaistValid] = useState()
+    const [legsValid, setLegsValid] = useState()
+    const [headCount, setHeadCount] = useState(0)
+    const [torsoCount, setTorsoCount] = useState(0)
+    const [armsCount, setArmsCount] = useState(0)
+    const [waistCount, setWaistCount] = useState(0)
+    const [legsCount, setLegsCount] = useState(0)
+    const [headSlots, setHeadSlots] = useState("")
+    const [torsoSlots, setTorsoSlots] = useState("")
+    const [armsSlots, setArmsSlots] = useState("")
+    const [waistSlots, setWaistSlots] = useState("")
+    const [legsSlots, setLegsSlots] = useState("")
 
     const [slotsDisplay, setSlotsDisplay] = useState("0--")
     useEffect(()=>{
@@ -26,33 +38,124 @@ const DecorationDisplay = (props) => {
              //eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
+
     useEffect(()=>{
-        setDecoValid(false)
-        setSlotCount(0)
+        setHeadValid(false)
+        setHeadCount(0)
         let scTotal = 0
-        console.log("HeadDeco Length" + props.HeadDecos.length)
+        //console.log("HeadDeco Length" + props.HeadDecos.length)
         for(let i = 0; i < props.HeadDecos.length; i++){
             scTotal = scTotal + props.HeadDecos[i].slots
             console.log(scTotal)
             //console.log("sc" + slotCount + "props slots" + props.HeadDecos[i].slots + "" +(slotCount + props.HeadDecos[i].slots))
             // setSlotCount(scTotal)
         }
-        setSlotCount(scTotal)
-        console.log(slotCount, props.name)
+        //console.log(scTotal + "scTotal")
+        setHeadCount(scTotal)
         axios.get(`/armor/search?name=${props.headState}&skill=%&slots=%&type=Head`)
         .then(response =>{
-            console.log(slotCount)
-            if(response.data.data[0].slots >= (props.slots + slotCount)){
-                setDecoValid(true)
-                setArmorSlots(response.data.data[0].slots);
+            if(response.data.data[0].slots >= (props.slots + scTotal)){
+                setHeadValid(true)
+                setHeadSlots(response.data.data[0].slots);
+                //console.log("true")
             }
             else{
-                setArmorSlots(response.data.data[0].slots);
-                //console.log("armor slots",armorSlots, "math", slotCount + props.slots, "response", response.data.data[0].slots)
+                setHeadSlots(response.data.data[0].slots);
+                //console.log("armor slots",headSlots, "math", headCount + 0, "response", response.data.data[0].slots)
             }
         })
          //eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.headState, props.HeadDecos,])
+
+    useEffect(()=>{
+        setTorsoValid(false)
+        setTorsoCount(0)
+        let scTotal = 0
+        for(let i = 0; i < props.TorsoDecos.length; i++){
+            scTotal = scTotal + props.TorsoDecos[i].slots
+            console.log(scTotal)
+        }
+        setTorsoCount(scTotal)
+        axios.get(`/armor/search?name=${props.torsoState}&skill=%&slots=%&type=Torso`)
+        .then(response =>{
+            if(response.data.data[0].slots >= (props.slots + scTotal)){
+                setTorsoValid(true)
+                setTorsoSlots(response.data.data[0].slots);
+            }
+            else{
+                setTorsoSlots(response.data.data[0].slots);
+            }
+        })
+         //eslint-disable-next-line react-hooks/exhaustive-deps
+    },[props.torsoState, props.TorsoDecos,])
+
+    useEffect(()=>{
+        setArmsValid(false)
+        setArmsCount(0)
+        let scTotal = 0
+        for(let i = 0; i < props.ArmsDecos.length; i++){
+            scTotal = scTotal + props.ArmsDecos[i].slots
+            console.log(scTotal)
+        }
+        setArmsCount(scTotal)
+        axios.get(`/armor/search?name=${props.armsState}&skill=%&slots=%&type=Arms`)
+        .then(response =>{
+            if(response.data.data[0].slots >= (props.slots + scTotal)){
+                setArmsValid(true)
+                setArmsSlots(response.data.data[0].slots);
+            }
+            else{
+                setArmsSlots(response.data.data[0].slots);
+            }
+        })
+         //eslint-disable-next-line react-hooks/exhaustive-deps
+    },[props.armsState, props.ArmsDecos,])
+
+    useEffect(()=>{
+        setWaistValid(false)
+        setWaistCount(0)
+        let scTotal = 0
+        for(let i = 0; i < props.WaistDecos.length; i++){
+            scTotal = scTotal + props.WaistDecos[i].slots
+            console.log(scTotal)
+        }
+        setWaistCount(scTotal)
+        axios.get(`/armor/search?name=${props.waistState}&skill=%&slots=%&type=Waist`)
+        .then(response =>{
+            if(response.data.data[0].slots >= (props.slots + scTotal)){
+                setWaistValid(true)
+                setWaistSlots(response.data.data[0].slots);
+            }
+            else{
+                setWaistSlots(response.data.data[0].slots);
+            }
+        })
+         //eslint-disable-next-line react-hooks/exhaustive-deps
+    },[props.waistState, props.WaistDecos,])
+
+    useEffect(()=>{
+        setLegsValid(false)
+        setLegsCount(0)
+        let scTotal = 0
+        for(let i = 0; i < props.LegsDecos.length; i++){
+            scTotal = scTotal + props.LegsDecos[i].slots
+            //console.log(scTotal)
+        }
+        setLegsCount(scTotal)
+        axios.get(`/armor/search?name=${props.legsState}&skill=%&slots=%&type=Legs`)
+        .then(response =>{
+            if(response.data.data[0].slots >= (props.slots + scTotal)){
+                setLegsValid(true)
+                setLegsSlots(response.data.data[0].slots);
+            }
+            else{
+                setLegsSlots(response.data.data[0].slots);
+            }
+        })
+         //eslint-disable-next-line react-hooks/exhaustive-deps
+    },[props.legsState, props.LegsDecos,])
+
+
     return(
         <>
         {props.location !== "setDisplay" ? 
@@ -81,12 +184,16 @@ const DecorationDisplay = (props) => {
 
             <div className = "skillDisplay">
                 <div>Add Decoration to:</div>
-                {decoValid === true && slotCount + props.slots <= armorSlots&& <button
+                {headValid === true && headCount + props.slots <= headSlots&& <button
                 onClick ={() =>{props.equipDeco(props.name, props.slots, "Head")}}>Head</button>}
-                <button onClick = {()=>{console.log(props.HeadDecos)}}>HeadDecos</button>
-                <button onClick = {()=>{console.log(decoValid)}}>DecoValid</button>
-                <button onClick = {()=>{console.log(armorSlots)}}>ArmorSlots</button>
-                <button>Legs</button>
+                {torsoValid === true && torsoCount + props.slots <= torsoSlots&& <button
+                onClick ={() =>{props.equipDeco(props.name, props.slots, "Torso")}}>Torso</button>}
+                {armsValid === true && armsCount + props.slots <= armsSlots&& <button
+                onClick ={() =>{props.equipDeco(props.name, props.slots, "Arms")}}>Arms</button>}
+                {waistValid === true && waistCount + props.slots <= waistSlots&& <button
+                onClick ={() =>{props.equipDeco(props.name, props.slots, "Waist")}}>Waist</button>}
+                {legsValid === true && legsCount + props.slots <= legsSlots&& <button
+                onClick ={() =>{props.equipDeco(props.name, props.slots, "Legs")}}>Legs</button>}
                 <button>Talisman</button>
 
             </div>
@@ -96,7 +203,10 @@ const DecorationDisplay = (props) => {
             <div className = "armorInfoSet">
                 <div className = "row">
                     <img className = "decorationPic" src={"/images/decoration.png"} alt = "Decoration"></img>
-                    <button className = "equipButton">Unequip</button>
+                    <button className = "equipButton" onClick={()=>{
+                        console.log(props.name, props.type)
+                        props.unequipDeco(props.name, props.type);
+                        }}>Unequip</button>
                 </div>
                 <div>
                     {props.name}
@@ -129,7 +239,11 @@ function mapStateToProps(state){
         waistState: state.armor.Waist,
         legsState: state.armor.Legs,
         talismanState: state.armor.Talisman,
-        HeadDecos: state.deco.HeadDecos
+        HeadDecos: state.deco.HeadDecos,
+        TorsoDecos: state.deco.TorsoDecos,
+        ArmsDecos: state.deco.ArmsDecos,
+        WaistDecos: state.deco.WaistDecos,
+        LegsDecos: state.deco.LegsDecos
     }
 }
 

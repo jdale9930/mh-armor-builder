@@ -8,8 +8,8 @@ export function equipDeco(deco, slots, piece){
     return{type: EQUIP_DECO, deco: deco, slots: slots, piece: piece}
 }
 
-export function unequipDeco(deco, decoSlots, piece, pieceSlots){
-    return{type: UNEQUIP_DECO, deco: {deco, decoSlots}, piece: {piece, pieceSlots}}
+export function unequipDeco(deco, piece){
+    return{type: UNEQUIP_DECO, deco: deco, piece: piece}
 }
 
 export function clearDecosFromPiece(piece){
