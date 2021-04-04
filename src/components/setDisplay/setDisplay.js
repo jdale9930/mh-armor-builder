@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {equipArmor, unequipArmor, clearArmor} from "../../Redux/Actions"
 import ArmorDisplay from "../armorDisplay/armorDisplay"
 import DecorationDisplay from "../decorationDisplay/decorationDisplay"
+import TotalStatsDisplay from "../totalStatsDisplay/totalStatsDisplay"
 import axios from "axios"
 import "./setDisplay.css"
 
@@ -325,6 +326,39 @@ const SetDisplay = (props) => {
                     />
                 )}
             </div>
+            <TotalStatsDisplay
+                Head = {{skills: [headLocal.skill1,
+                    headLocal.skill2,
+                    headLocal.skill3,
+                    headLocal.skill4],
+                stats: {
+                    defense: headLocal.defense,
+                    fireRes: headLocal.fireRes,
+                    waterRes: headLocal.waterRes,
+                    thunderRes: headLocal.thunderRes,
+                    iceRes: headLocal.iceRes,
+                    dragonRes: headLocal.dragonRes,
+                    slots: headLocal.slots
+                }
+                }}
+                Torso = {{skills: {skill1: torsoLocal.skill1,
+                    skill2: torsoLocal.skill2,
+                    skill3: torsoLocal.skill3,
+                    skill4: torsoLocal.skill4},
+                stats: {
+                    defense: torsoLocal.defense,
+                    fireRes: torsoLocal.fireRes,
+                    waterRes: torsoLocal.waterRes,
+                    thunderRes: torsoLocal.thunderRes,
+                    iceRes: torsoLocal.iceRes,
+                    dragonRes: torsoLocal.dragonRes,
+                    slots: torsoLocal.slots
+                }
+                }}
+                Arms = {armsLocal}
+                Waist = {waistLocal}
+                Legs = {legsLocal}
+                />
         </div>
     )
 }
