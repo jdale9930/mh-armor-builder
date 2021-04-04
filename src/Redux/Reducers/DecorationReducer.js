@@ -4,12 +4,36 @@ import {EQUIP_DECO} from "../Actions";
 import {UNEQUIP_DECO} from "../Actions";
 
 const initialState = {
-    HeadDecos: [],
-    TorsoDecos: [],
-    ArmsDecos: [],
-    WaistDecos: [],
-    LegsDecos: [],
-    Talisman: 0
+    HeadDecos: {
+        slot1: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot2: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot3: {Decoration: "None", Skill: {Name: "None", Value: 0}}
+    },
+    TorsoDecos: {
+        slot1: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot2: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot3: {Decoration: "None", Skill: {Name: "None", Value: 0}}
+    },
+    ArmsDecos: {
+        slot1: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot2: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot3: {Decoration: "None", Skill: {Name: "None", Value: 0}}
+    },
+    WaistDecos: {
+        slot1: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot2: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot3: {Decoration: "None", Skill: {Name: "None", Value: 0}}
+    },
+    LegsDecos: {
+        slot1: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot2: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot3: {Decoration: "None", Skill: {Name: "None", Value: 0}}
+    },
+    TalismanDecos: {
+        slot1: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot2: {Decoration: "None", Skill: {Name: "None", Value: 0}},
+        slot3: {Decoration: "None", Skill: {Name: "None", Value: 0}}
+    },
 }
 
 export default function DecorationReducer(state = initialState, action){
@@ -67,15 +91,17 @@ export default function DecorationReducer(state = initialState, action){
                 return({...state, LegsDecos:[...filteredDecos]})}
         case CLEAR_DECOS_FROM_PIECE:
             if(action.piece = "Head")
-            {return({...state, HeadDecos: []})}
+            {return({...state, HeadDecos: initialState.HeadDecos})}
             if(action.piece = "Torso")
-            {return({...state, TorsoDecos: []})}
+            {return({...state, TorsoDecos: initialState.TorsoDecos})}
             if(action.piece = "Arms")
-            {return({...state, ArmsDecos: []})}
+            {return({...state, ArmsDecos: initialState.ArmsDecos})}
             if(action.piece = "Waist")
-            {return({...state, WaistDecos: []})}
+            {return({...state, WaistDecos: initialState.WaistDecos})}
             if(action.piece = "Legs")
-            {return({...state, LegsDecos: []})}
+            {return({...state, LegsDecos: initialState.LegsDecos})}
+            if(action.piece = "Talisman")
+            {return({...state, LegsDecos: initialState.TalismanDecos})}
             return state;
         default:
             return state;

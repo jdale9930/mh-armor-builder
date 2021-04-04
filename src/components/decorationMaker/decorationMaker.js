@@ -1,6 +1,9 @@
 import {React, useState} from "react"
 import axios from "axios"
 import skills from "../resources/skills"
+import CardMaker from "../cardMaker/CardMaker"
+import OtherPlayers from "../cardMaker/OtherPlayers"
+import PlayerHand from "../cardMaker/playerHand"
 
 const DecorationMaker = () =>{
     const [error, setError] = useState("")
@@ -73,6 +76,7 @@ const DecorationMaker = () =>{
                 })
                 }}>Submit</button>
             </div>
+    
         </div>
     )
 }
