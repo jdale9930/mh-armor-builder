@@ -9,13 +9,13 @@ const ArmorMaker = () =>{
     const [armorSet, setArmorSet] = useState("")
     const [gender, setGender] = useState("Male")
     const [skill1, setSkill1] = useState("")
-    const [skill1Val, setSkill1Val] = useState("")
+    const [skill1Val, setSkill1Val] = useState(0)
     const [skill2, setSkill2] = useState("")
-    const [skill2Val, setSkill2Val] = useState("")
+    const [skill2Val, setSkill2Val] = useState(0)
     const [skill3, setSkill3] = useState("")
-    const [skill3Val, setSkill3Val] = useState("")
+    const [skill3Val, setSkill3Val] = useState(0)
     const [skill4, setSkill4] = useState("")
-    const [skill4Val, setSkill4Val] = useState("")
+    const [skill4Val, setSkill4Val] = useState(0)
     const [defense, setDefense] = useState("0")
     const [fireRes, setFireRes] = useState("0")
     const [waterRes, setWaterRes] = useState("0")
@@ -190,7 +190,7 @@ const ArmorMaker = () =>{
             <div>
                 <button onClick = {()=>{submit({
                     name: name,
-                    type: armorPiece,
+                    piece: armorPiece,
                     armorSet: armorSet,
                     gender: gender,
                     rarity: rarity,

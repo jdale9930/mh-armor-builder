@@ -10,15 +10,15 @@ const initialState = {
         Rarity: 0,
         Gender: "Male",
         Slots: {
-            slot1: {value: 0, isFilled: false}, 
-            slot2: {value: 0, isFilled: false}, 
-            slot3: {value: 0, isFilled: false}
+            slot1: {Value: 0, isFilled: false}, 
+            slot2: {Value: 0, isFilled: false}, 
+            slot3: {Value: 0, isFilled: false}
         },
         Skills: {
-            skill1: {Skill: "None", Value: 0},
-            skill2: {Skill: "None", Value: 0},
-            skill3: {Skill: "None", Value: 0},
-            skill4: {Skill: "None", Value: 0}},
+            skill1: {Skill: "", Value: 0},
+            skill2: {Skill: "", Value: 0},
+            skill3: {Skill: "", Value: 0},
+            skill4: {Skill: "", Value: 0}},
         Stats: {
             defense: 0,
             fireRes: 0,
@@ -40,10 +40,10 @@ const initialState = {
             slot3: {value: 0, isFilled: false}
         },
         Skills: {
-            skill1: {Skill: "None", Value: 0},
-            skill2: {Skill: "None", Value: 0},
-            skill3: {Skill: "None", Value: 0},
-            skill4: {Skill: "None", Value: 0}},
+            skill1: {Skill: "", Value: 0},
+            skill2: {Skill: "", Value: 0},
+            skill3: {Skill: "", Value: 0},
+            skill4: {Skill: "", Value: 0}},
         Stats: {
             defense: 0,
             fireRes: 0,
@@ -54,7 +54,7 @@ const initialState = {
         },
     },
     Arms: {
-        Name: "None",
+        Name: "",
         Piece: "Arms",
         ArmorSet: "None",
         Rarity: 0,
@@ -65,10 +65,10 @@ const initialState = {
             slot3: {value: 0, isFilled: false}
         },
         Skills: {
-            skill1: {Skill: "None", Value: 0},
-            skill2: {Skill: "None", Value: 0},
-            skill3: {Skill: "None", Value: 0},
-            skill4: {Skill: "None", Value: 0}},
+            skill1: {Skill: "", Value: 0},
+            skill2: {Skill: "", Value: 0},
+            skill3: {Skill: "", Value: 0},
+            skill4: {Skill: "", Value: 0}},
         Stats: {
             defense: 0,
             fireRes: 0,
@@ -80,7 +80,7 @@ const initialState = {
         },
     
     Waist: {
-        Name: "None",
+        Name: "",
         Piece: "Waist",
         ArmorSet: "None",
         Rarity: 0,
@@ -91,10 +91,10 @@ const initialState = {
             slot3: {value: 0, isFilled: false}
         },
         Skills: {
-            skill1: {Skill: "None", Value: 0},
-            skill2: {Skill: "None", Value: 0},
-            skill3: {Skill: "None", Value: 0},
-            skill4: {Skill: "None", Value: 0}},
+            skill1: {Skill: "", Value: 0},
+            skill2: {Skill: "", Value: 0},
+            skill3: {Skill: "", Value: 0},
+            skill4: {Skill: "", Value: 0}},
         Stats: {
             defense: 0,
             fireRes: 0,
@@ -105,7 +105,7 @@ const initialState = {
         },
     },
     Legs: {
-        Name: "None",
+        Name: "",
         Piece: "Legs",
         ArmorSet: "None",
         Rarity: 0,
@@ -116,10 +116,10 @@ const initialState = {
             slot3: {value: 0, isFilled: false}
         },
         Skills: {
-            skill1: {Skill: "None", Value: 0},
-            skill2: {Skill: "None", Value: 0},
-            skill3: {Skill: "None", Value: 0},
-            skill4: {Skill: "None", Value: 0}
+            skill1: {Skill: "", Value: 0},
+            skill2: {Skill: "", Value: 0},
+            skill3: {Skill: "", Value: 0},
+            skill4: {Skill: "", Value: 0}
         },
         Stats: {
             defense: 0,
@@ -131,7 +131,7 @@ const initialState = {
         },
     },
     Talisman: {
-        Name: "None",
+        Name: "",
         Rarity: 0,
         Slots: {
             slot1: {value: 0, isFilled: false}, 
@@ -139,8 +139,8 @@ const initialState = {
             slot3: {value: 0, isFilled: false}
         },
         Skills: {
-            skill1: {Skill: "None", Value: 0},
-            skill2: {Skill: "None", Value: 0},
+            skill1: {Skill: "", Value: 0},
+            skill2: {Skill: "", Value: 0},
         },
     }      
 }
@@ -148,6 +148,7 @@ const initialState = {
 export default function ArmorReducer(state = initialState, action){
     switch(action.type){
         case EQUIP_ARMOR:
+            console.log(action.armor)
             if(action.piece === "Head"){
                 return({...state, Head: action.armor})}
             if(action.piece === "Torso"){

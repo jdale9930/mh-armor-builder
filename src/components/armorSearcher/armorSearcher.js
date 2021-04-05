@@ -7,12 +7,12 @@ const ArmorSearcher = () => {
     const [name, setName] = useState("")
     const [slots, setSlots] = useState("")
     const [skill, setSkill] = useState("")
-    const [armorType, setType] = useState("")
+    const [armorPiece, setPiece] = useState("")
     //const [armorClass, setClass] = useState("")
     const [searchResults, setSearchResults] = useState([])
     
     async function searchArmor(){
-            let results = await axios.get(`/armor/search?name=${name}&skill=${skill}&slots=${slots}&type=${armorType}`)
+            let results = await axios.get(`/armor/search?name=${name}&skill=${skill}&slots=%&piece=${armorPiece}`)
             console.log(results)
             setSearchResults(results.data.data)
     }
@@ -42,7 +42,7 @@ const ArmorSearcher = () => {
                         <option value = "3">3</option>
                     </select>
                     <div style ={{width: "78px", marginLeft: "20px"}}>Type:</div>
-                    <select value = {armorType} onChange ={(evt)=>{setType(evt.target.value)}}>
+                    <select value = {armorPiece} onChange ={(evt)=>{setPiece(evt.target.value)}}>
                         <option value = ""></option>
                         <option value = "Head">Head</option>
                         <option value = "Torso">Torso</option>
@@ -61,19 +61,25 @@ const ArmorSearcher = () => {
                 key = {v.armor_id}
                 none = {false}
                 name = {v.name}
-                type = {v.type}
+                piece = {v.piece}
                 class = {v.class}
+                slot1 = {v.slot1}
+                slot2 = {v.slot2}
+                slot3 = {v.slot3}
                 skill1 = {v.skill1}
+                skill1Value = {v.skill1Value}
                 skill2 = {v.skill2}
+                skill2Value = {v.skill2Value}
                 skill3 = {v.skill3}
+                skill3Value = {v.skill3Value}
                 skill4 = {v.skill4}
+                skill4Value = {v.skill4Value}
                 defense = {v.defense}
                 fireRes = {v.fireRes}
                 waterRes = {v.waterRes}
                 thunderRes = {v.thunderRes}
                 iceRes = {v.iceRes}
                 dragonRes = {v.dragonRes}
-                slots = {v.slots}
                 rarity = {v.rarity}
                 />)}
             </div>

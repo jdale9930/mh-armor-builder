@@ -15,28 +15,6 @@ const ArmorSetBuilder = (props) => {
         <div>
             <h1>Armor Set Builder</h1>
             <div className = "setBuilderMain">
-                {/* <div className = "armorDisplay">
-                    <div>
-                        <img className = "armorIcon" src="/images/Head.png" alt = "Helmet"/>
-                        {props.headState}
-                    </div>
-                    <div>
-                        <img className = "armorIcon" src="/images/Torso.png" alt = "Chest"/>
-                        {props.torsoState}
-                    </div>
-                    <div>
-                        <img className = "armorIcon" src="/images/Arms.png" alt = "Arm"/>
-                        {props.armsState}
-                    </div>
-                    <div>
-                        <img className = "armorIcon" src="/images/Waist.png" alt = "Waist"/>
-                        {props.waistState}
-                    </div>
-                    <div>
-                        <img className = "armorIcon" src="/images/Legs.png" alt = "Leg"/>
-                        {props.legsState}
-                    </div>
-                </div> */}
                 <SetDisplay></SetDisplay>
                 <div>
                     <div>

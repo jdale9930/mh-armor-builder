@@ -4,37 +4,12 @@ import {connect} from "react-redux";
 import {equipArmor, unequipArmor, clearArmor, clearDecosFromPiece} from "../../Redux/Actions"
 
 const ArmorDisplay = (props) => {
-    const [skill1, setSkill1] = useState([]);
-    const [skill2, setSkill2] = useState([]);
-    const [skill3, setSkill3] = useState([]);
-    const [skill4, setSkill4] = useState([]);
-    const [slotsDisplay, setSlotsDisplay] = useState("---")
     const [equipped, setEquipped] = useState()
     
     useEffect(()=>{
-        if(props.none === false){
-            let splitSkill1 = props.skill1.split(":");
-            setSkill1(splitSkill1)
-            let splitSkill2 = props.skill2.split(":");
-            setSkill2(splitSkill2)
-            let splitSkill3 = props.skill3.split(":");
-            setSkill3(splitSkill3)
-            let splitSkill4 = props.skill3.split(":");
-            setSkill4(splitSkill4)
-            let slotLine = "---"
-            let i = 0
-            for(i = 0; i < props.slots; i++){
-                slotLine =slotLine.replace("-","0")
-                setSlotsDisplay(slotLine)
-            }
-        }
-         //eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-
-    useEffect(()=>{
-        if(props.headState !== props.name && props.torsoState !== props.name &&
-            props.armsState !== props.name && props.waistState !== props.name &&
-            props.legsState !== props.name){
+        if(props.headState.Name !== props.name && props.torsoState.Name !== props.name &&
+            props.armsState.Name !== props.name && props.waistState.Name !== props.name &&
+            props.legsState.Name !== props.name){
                 setEquipped(true)
             }
         else{
@@ -47,14 +22,40 @@ const ArmorDisplay = (props) => {
         <div className = "armorDisplayContainer">
             <div className = "armorInfoDisplay">
                 <div className = "row">
-                    <img className = "displayIcon" src={"/images/" + props.type + ".png"}alt = {`${props.type}`}></img>
+                    <img className = "displayIcon" src={"/images/" + props.piece + ".png"}alt = {`${props.piece}`}></img>
                     {equipped !== false ? <button className = "equipButton" onClick ={()=>{
-                    props.equipArmor(props.name, props.type);
+                    props.equipArmor(
+                        {
+                            Name: props.name,
+                            Piece: props.piece,
+                            ArmorSet: props.armorSet,
+                            Rarity: props.rarity,
+                            Gender: props.gender,
+                            Slots: {
+                                slot1: {Value: props.slot1, isFilled: false}, 
+                                slot2: {Value: props.slot2, isFilled: false}, 
+                                slot3: {Value: props.slot3, isFilled: false}
+                            },
+                            Skills: {
+                                skill1: {Skill: props.skill1, Value: props.skill1Value},
+                                skill2: {Skill: props.skill2, Value: props.skill2Value},
+                                skill3: {Skill: props.skill3, Value: props.skill3Value},
+                                skill4: {Skill: props.skill4, Value: props.skill4Value}},
+                            Stats: {
+                                defense: props.defense,
+                                fireRes: props.fireRes,
+                                waterRes: props.waterRes,
+                                thunderRes: props.thunderRes,
+                                iceRes: props.iceRes,
+                                dragonRes: props.dragonRes
+                                },
+                            },
+                        props.piece);
                     console.log(props.headState)
                     }}>Equip</button>:
                     <button className = "equipButton" onClick = {()=>{
-                    props.unequipArmor(props.type);
-                    props.clearDecosFromPiece(props.type);
+                    props.unequipArmor(props.piece);
+                    props.clearDecosFromPiece(props.piece);
                     console.log(props.HeadDecos)
                     }}>Unequip</button>}
                 </div>
@@ -65,7 +66,7 @@ const ArmorDisplay = (props) => {
                     Defense: {props.defense}
                 </div>
                 <div>
-                    Slots: {slotsDisplay}
+                    Slots: {props.slot1}-{props.slot2}-{props.slot3}
                 </div>
                 
                 {/* {equipped !== false ? <button onClick ={()=>{
@@ -77,21 +78,21 @@ const ArmorDisplay = (props) => {
                 }}>Unequip</button>} */}
             </div>
             <div className = "skillDisplay">
-                {props.skill1 !== ":" && <div className = "skillRow">
-                    <div className = "skillRow1">{skill1[0]}</div>
-                    <div className = "skillRow2">{skill1[1]}</div>
+                {props.skill1 !== "" && <div className = "skillRow">
+                    <div className = "skillRow1">{props.skill1}</div>
+                    <div className = "skillRow2">{props.skill1Value}</div>
                 </div>}
-                {props.skill2 !== ":" && <div className = "skillRow">
-                    <div className = "skillRow1">{skill2[0]}</div>
-                    <div className = "skillRow2">{skill2[1]}</div>
+                {props.skill2 !== "" && <div className = "skillRow">
+                    <div className = "skillRow1">{props.skill2}</div>
+                    <div className = "skillRow2">{props.skill2Value}</div>
                 </div>}
-                {props.skill3 !== ":" && <div className = "skillRow">
-                    <div className = "skillRow1">{skill3[0]}</div>
-                    <div className = "skillRow2">{skill3[1]}</div>
+                {props.skill3 !== "" && <div className = "skillRow">
+                    <div className = "skillRow1">{props.skill3}</div>
+                    <div className = "skillRow2">{props.skill3Value}</div>
                 </div>}
-                {props.skill4 !== ":" && <div className = "skillRow">
-                    <div className = "skillRow1">{skill4[0]}</div>
-                    <div className = "skillRow2">{skill4[1]}</div>
+                {props.skill4 !== "" && <div className = "skillRow">
+                    <div className = "skillRow1">{props.skill4}</div>
+                    <div className = "skillRow2">{props.skill4Value}</div>
                 </div>}
 
             </div>

@@ -6,7 +6,7 @@ export const CLEAR_ARMOR = "Clear armor";
 
 //
 export function equipArmor(armor, piece){
-    return{type: EQUIP_ARMOR, armor: armor}
+    return{type: EQUIP_ARMOR, armor: armor, piece: piece}
 }
 
 export function unequipArmor(piece){
