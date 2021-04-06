@@ -4,6 +4,10 @@ import {equipArmor, unequipArmor, clearArmor} from "../../Redux/Actions"
 import ArmorDisplay from "../armorDisplay/armorDisplay"
 import DecorationDisplay from "../decorationDisplay/decorationDisplay"
 import TotalStatsDisplay from "../totalStatsDisplay/totalStatsDisplay"
+import Collapse from 'react-bootstrap/Collapse'
+import Card from "react-bootstrap/Card"
+import "../decorationDisplay/decorationDisplay.css"
+
 import axios from "axios"
 import "./setDisplay.css"
 
@@ -13,7 +17,7 @@ const SetDisplay = (props) => {
     const [ArmsDecoArray, setArmsDecoArray] = useState([])
     const [WaistDecoArray, setWaistDecoArray] = useState([])
     const [LegsDecoArray, setLegsDecoArray] = useState([])
-
+    const [open, setOpen] = useState(false);
     
     return (
         <div>
@@ -45,23 +49,42 @@ const SetDisplay = (props) => {
                 dragonRes = {props.headState.Stats.dragonRes}
                 />
                 </div>
-                {/* <div className = "row">
-                {props.HeadDecos.length > 0 && HeadDecoArray.map((v) =>
+                <div className = "row">
                     <DecorationDisplay
-                        name = {v.name}
-                        skill1 = {v.skill1}
-                        skill2 = {v.skill2}
-                        slots = {v.slots}
-                        location = "setDisplay"
-                        type = "Head"
-                         key = {v.name}
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.HeadDecos.slot1.Decoration}
+                    skill1 = {props.HeadDecos.slot1.Skill.Name}
+                    skill1Value = {props.HeadDecos.slot1.Skill.Value}
+                    piece = "Head"
+                    slot = "1"
                     />
-                )}
-                </div> */}
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.HeadDecos.slot2.Decoration}
+                    skill1 = {props.HeadDecos.slot2.Skill.Name}
+                    skill1Value = {props.HeadDecos.slot2.Skill.Value}
+                    piece = "Head"
+                    slot = "2"
+
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.HeadDecos.slot3.Decoration}
+                    skill1 = {props.HeadDecos.slot3.Skill.Name}
+                    skill1Value = {props.HeadDecos.slot3.Skill.Value}
+                    piece = "Head"
+                    slot = "3"
+
+                    />
+                </div>
+
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Torso.png" alt = "Torso"/>
                 <ArmorDisplay
-                // key = {headState.armor_id}
                 none = {false}
                 name = {props.torsoState.Name}
                 piece = {props.torsoState.Piece}
@@ -85,6 +108,39 @@ const SetDisplay = (props) => {
                 dragonRes = {props.torsoState.Stats.dragonRes}
                 />
                 </div>
+                <div className = "row">
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.TorsoDecos.slot1.Decoration}
+                    skill1 = {props.TorsoDecos.slot1.Skill.Name}
+                    skill1Value = {props.TorsoDecos.slot1.Skill.Value}
+                    piece = "Torso"
+                    slot = "1"
+
+                    />
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.TorsoDecos.slot2.Decoration}
+                    skill1 = {props.TorsoDecos.slot2.Skill.Name}
+                    skill1Value = {props.TorsoDecos.slot2.Skill.Value}
+                    piece = "Torso"
+                    slot = "2"
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.TorsoDecos.slot3.Decoration}
+                    skill1 = {props.TorsoDecos.slot3.Skill.Name}
+                    skill1Value = {props.TorsoDecos.slot3.Skill.Value}
+                    piece = "Torso"
+                    slot = "3"
+
+                    />
+                </div>
+
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Arms.png" alt = "Arms"/>
                 <ArmorDisplay
@@ -112,6 +168,37 @@ const SetDisplay = (props) => {
                 dragonRes = {props.armsState.Stats.dragonRes}
                 />
                 </div>
+                <div className = "row">
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.ArmsDecos.slot1.Decoration}
+                    skill1 = {props.ArmsDecos.slot1.Skill.Name}
+                    skill1Value = {props.ArmsDecos.slot1.Skill.Value}
+                    piece = "Arms"
+                    slot = "1"
+                    />
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.ArmsDecos.slot2.Decoration}
+                    skill1 = {props.ArmsDecos.slot2.Skill.Name}
+                    skill1Value = {props.ArmsDecos.slot2.Skill.Value}
+                    piece = "Arms"
+                    slot = "2"
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.ArmsDecos.slot3.Decoration}
+                    skill1 = {props.ArmsDecos.slot3.Skill.Name}
+                    skill1Value = {props.ArmsDecos.slot3.Skill.Value}
+                    piece = "Arms"
+                    slot = "3"
+                    />
+                </div>
+
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Waist.png" alt = "Waist"/>
                 <ArmorDisplay
@@ -139,6 +226,37 @@ const SetDisplay = (props) => {
                 dragonRes = {props.waistState.Stats.dragonRes}
                 />
                 </div>
+                <div className = "row">
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.WaistDecos.slot1.Decoration}
+                    skill1 = {props.WaistDecos.slot1.Skill.Name}
+                    skill1Value = {props.WaistDecos.slot1.Skill.Value}
+                    piece = "Waist"
+                    slot = "1"
+                    />
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.WaistDecos.slot2.Decoration}
+                    skill1 = {props.WaistDecos.slot2.Skill.Name}
+                    skill1Value = {props.WaistDecos.slot2.Skill.Value}
+                    piece = "Waist"
+                    slot = "2"
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.WaistDecos.slot3.Decoration}
+                    skill1 = {props.WaistDecos.slot3.Skill.Name}
+                    skill1Value = {props.WaistDecos.slot3.Skill.Value}
+                    piece = "Waist"
+                    slot = "3"
+                    />
+                </div>
+
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Legs.png" alt = "Legs"/>
                 <ArmorDisplay
@@ -165,6 +283,36 @@ const SetDisplay = (props) => {
                 iceRes = {props.legsState.Stats.iceRes}
                 dragonRes = {props.legsState.Stats.dragonRes}
                 />
+                </div>
+                <div className = "row">
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.LegsDecos.slot1.Decoration}
+                    skill1 = {props.LegsDecos.slot1.Skill.Name}
+                    skill1Value = {props.LegsDecos.slot1.Skill.Value}
+                    piece = "Legs"
+                    slot = "1"
+                    />
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.LegsDecos.slot2.Decoration}
+                    skill1 = {props.LegsDecos.slot2.Skill.Name}
+                    skill1Value = {props.LegsDecos.slot2.Skill.Value}
+                    piece = "Legs"
+                    slot = "2"
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.LegsDecos.slot3.Decoration}
+                    skill1 = {props.LegsDecos.slot3.Skill.Name}
+                    skill1Value = {props.LegsDecos.slot3.Skill.Value}
+                    piece = "Legs"
+                    slot = "3"
+                    />
                 </div>
                 </div>
         </div>

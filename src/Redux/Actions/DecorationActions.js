@@ -3,13 +3,13 @@ export const UNEQUIP_DECO = "Unequip deco"
 export const CLEAR_ALL_DECOS = "Clear decos"
 export const CLEAR_DECOS_FROM_PIECE = "Clear decos from piece"
 
-export function equipDeco(deco, piece){
+export function equipDeco(deco, piece, slot){
     console.log(deco)
-    return{type: EQUIP_DECO, deco: {Name: deco.name, Skill: deco.skill, Value: deco.value}, piece: piece}
+    return{type: EQUIP_DECO, deco: deco, piece: piece, slot: slot}
 }
 
-export function unequipDeco(deco, piece){
-    return{type: UNEQUIP_DECO, deco: deco, piece: piece}
+export function unequipDeco(piece, slot){
+    return{type: UNEQUIP_DECO, piece: piece, slot: slot}
 }
 
 export function clearDecosFromPiece(piece){

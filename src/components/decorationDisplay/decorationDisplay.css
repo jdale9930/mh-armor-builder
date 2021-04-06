@@ -16,6 +16,7 @@
     width: 140px;
     border-left: 1px solid black;
     border-right: 1px solid black;
+    font-size: 10px;
 }
 
 .armorInfoDisplay{
@@ -54,6 +55,7 @@
 .armorInfoSet{
     width: 120px;
     padding-left: 5px;
+    font-size: 12px;
 }
 
 .equipButton{

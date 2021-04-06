@@ -54,7 +54,7 @@ const initialState = {
         },
     },
     Arms: {
-        Name: "",
+        Name: "None",
         Piece: "Arms",
         ArmorSet: "None",
         Rarity: 0,
@@ -80,7 +80,7 @@ const initialState = {
         },
     
     Waist: {
-        Name: "",
+        Name: "None",
         Piece: "Waist",
         ArmorSet: "None",
         Rarity: 0,
@@ -105,7 +105,7 @@ const initialState = {
         },
     },
     Legs: {
-        Name: "",
+        Name: "None",
         Piece: "Legs",
         ArmorSet: "None",
         Rarity: 0,
@@ -131,7 +131,7 @@ const initialState = {
         },
     },
     Talisman: {
-        Name: "",
+        Name: "None",
         Rarity: 0,
         Slots: {
             slot1: {value: 0, isFilled: false}, 

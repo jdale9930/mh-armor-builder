@@ -15,3 +15,169 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* .armorDisplayContainer{
+  display: flex;
+  flex-flow: row wrap;
+  background-color:beige;
+  border: 2px solid black;
+  color: black;
+}
+
+.skillDisplay{
+  width: 190px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.skillDisplaySet{
+  width: 140px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.armorInfoDisplay{
+  width: 120px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding-left: 5px;
+}
+
+.skillRow{
+  display: flex;
+  flex-flow: row wrap;
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+.skillRow1{
+  width: 160px;
+}
+
+.skillRow1Set{
+  width: 110px;
+}
+
+.decorationPic{
+  width: 25px;
+}
+
+.decorationDisplaySet{
+  background-color:rgb(250, 250, 236);
+  border: 2px solid black;
+  color: black;
+  width: 152px
+}
+
+.armorInfoSet{
+  width: 120px;
+  padding-left: 5px;
+}
+
+.equipButton{
+  flex-basis: 70%;
+  margin: auto;
+}
+
+.setRow{
+  display: flex;
+  flex-flow: row wrap;
+  height: 104px;
+}
+
+.armorDisplay{
+  display: flex;
+  flex-flow: column wrap;
+  flex-basis: 40%;
+}
+
+.armorIcon{
+  height: 75px;
+  width: 75px;
+  padding-top: 15px;
+
+}
+
+.setBuilderMain{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.searchBox{
+  display: flex;
+  flex-flow: row wrap;
+  background-color: azure;
+  color: black;
+  padding: 5px;
+  width: 520px;
+}
+
+.SearchDisplay{
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.searchSpacer{
+  width: 150px;
+}
+
+.row{
+  display: flex;
+  flex-flow: row wrap;
+}
+.searchButton{
+  margin: 5px;
+  width: 207px;
+}
+
+.armorDisplayContainer{
+  display: flex;
+  flex-flow: row wrap;
+  background-color:beige;
+  border: 2px solid black;
+  color: black;
+  height: 100px;
+}
+
+.skillDisplay{
+  width: 190px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+
+}
+
+.armorInfoDisplay{
+  width: 120px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding-left: 5px;
+}
+
+.skillRow{
+  display: flex;
+  flex-flow: row wrap;
+  border-bottom: 1px solid black;
+  /* padding: 2px; */
+  /* background-color: rgb(247, 247, 236);
+  height: 9px;
+  line-height: 9px;
+}
+
+.skillRow1{
+  width: 160px;
+}
+
+.skillRow2{
+  text-align: right;
+  width: 18px;
+}
+
+.displayIcon{
+  width: 25px;
+  margin: auto;
+}
+
+.equipButton{
+  flex-basis: 70%;
+  margin:auto;
+} */ 

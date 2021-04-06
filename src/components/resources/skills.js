@@ -4,7 +4,7 @@ let skills = [
 "Peak Performance",
 "Resentment",
 "Resuscitate",
-"Critcal Eye",
+"Critical Eye",
 "Weakness Exploit",
 "Latent Power",
 "Maximum Might",

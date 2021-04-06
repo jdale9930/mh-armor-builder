@@ -40,8 +40,8 @@ const DecorationSearcher = () => {
                 none = {false}
                 name = {v.name}
                 skill1 = {v.skill1}
-                skill2 = {v.skill2}
-                slots = {v.slots}
+                skill1Value = {v.skill1Value}
+                slot = {v.slot}
                 />)}
             </div>
         </div>
