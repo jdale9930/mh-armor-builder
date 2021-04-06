@@ -134,7 +134,7 @@ const DecorationDisplay = (props) => {
             </div>
         </div>
         :
-        <div className = "decorationDisplaySet" style = {{width: "100px;"}}>
+        <div className = "decorationDisplaySet">
             <div className = "armorInfoSet">
                 <div className = "row">
                     <img className = "decorationPic" src={"/images/decoration.png"} alt = "Decoration"></img>

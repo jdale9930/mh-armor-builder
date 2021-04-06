@@ -51,7 +51,7 @@ const ArmorDisplay = (props) => {
                                 },
                             },
                         props.piece);
-                    console.log(props.headState)
+                    // console.log(props.headState)
                     }}>Equip</button>:
                     <button className = "equipButton" onClick = {()=>{
                     props.unequipArmor(props.piece);

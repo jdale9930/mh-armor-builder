@@ -13,7 +13,7 @@ const ArmorSearcher = () => {
     
     async function searchArmor(){
             let results = await axios.get(`/armor/search?name=${name}&skill=${skill}&slots=%&piece=${armorPiece}`)
-            console.log(results)
+            // console.log(results)
             setSearchResults(results.data.data)
     }
 

@@ -315,6 +315,7 @@ const SetDisplay = (props) => {
                     />
                 </div>
                 </div>
+                <TotalStatsDisplay/>
         </div>
     )
 }

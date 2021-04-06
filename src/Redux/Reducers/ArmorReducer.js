@@ -148,7 +148,7 @@ const initialState = {
 export default function ArmorReducer(state = initialState, action){
     switch(action.type){
         case EQUIP_ARMOR:
-            console.log(action.armor)
+            // console.log(action.armor)
             if(action.piece === "Head"){
                 return({...state, Head: action.armor})}
             if(action.piece === "Torso"){
