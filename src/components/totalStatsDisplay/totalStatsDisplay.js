@@ -20,36 +20,84 @@ const TotalStatsDisplay = (props) => {
             {skill: props.headState.Skills.skill2.Skill,value: props.headState.Skills.skill2.Value},
             {skill: props.headState.Skills.skill3.Skill,value: props.headState.Skills.skill3.Value},
             {skill: props.headState.Skills.skill4.Skill,value: props.headState.Skills.skill4.Value},
+            {skill: props.HeadDecos.slot1.Skill.Name, value: props.HeadDecos.slot1.Skill.Value},
+            {skill: props.HeadDecos.slot2.Skill.Name, value: props.HeadDecos.slot2.Skill.Value},
+            {skill: props.HeadDecos.slot3.Skill.Name, value: props.HeadDecos.slot3.Skill.Value},
+
+            {skill: props.torsoState.Skills.skill1.Skill,value: props.torsoState.Skills.skill1.Value},
+            {skill: props.torsoState.Skills.skill2.Skill,value: props.torsoState.Skills.skill2.Value},
+            {skill: props.torsoState.Skills.skill3.Skill,value: props.torsoState.Skills.skill3.Value},
+            {skill: props.torsoState.Skills.skill4.Skill,value: props.torsoState.Skills.skill4.Value},
+            {skill: props.TorsoDecos.slot1.Skill.Name, value: props.TorsoDecos.slot1.Skill.Value},
+            {skill: props.TorsoDecos.slot2.Skill.Name, value: props.TorsoDecos.slot2.Skill.Value},
+            {skill: props.TorsoDecos.slot3.Skill.Name, value: props.TorsoDecos.slot3.Skill.Value},
+
+            {skill: props.armsState.Skills.skill1.Skill,value: props.armsState.Skills.skill1.Value},
+            {skill: props.armsState.Skills.skill2.Skill,value: props.armsState.Skills.skill2.Value},
+            {skill: props.armsState.Skills.skill3.Skill,value: props.armsState.Skills.skill3.Value},
+            {skill: props.armsState.Skills.skill4.Skill,value: props.armsState.Skills.skill4.Value},
+            {skill: props.ArmsDecos.slot1.Skill.Name, value: props.ArmsDecos.slot1.Skill.Value},
+            {skill: props.ArmsDecos.slot2.Skill.Name, value: props.ArmsDecos.slot2.Skill.Value},
+            {skill: props.ArmsDecos.slot3.Skill.Name, value: props.ArmsDecos.slot3.Skill.Value},
+
+            {skill: props.waistState.Skills.skill1.Skill,value: props.waistState.Skills.skill1.Value},
+            {skill: props.waistState.Skills.skill2.Skill,value: props.waistState.Skills.skill2.Value},
+            {skill: props.waistState.Skills.skill3.Skill,value: props.waistState.Skills.skill3.Value},
+            {skill: props.waistState.Skills.skill4.Skill,value: props.waistState.Skills.skill4.Value},
+            {skill: props.WaistDecos.slot1.Skill.Name, value: props.WaistDecos.slot1.Skill.Value},
+            {skill: props.WaistDecos.slot2.Skill.Name, value: props.WaistDecos.slot2.Skill.Value},
+            {skill: props.WaistDecos.slot3.Skill.Name, value: props.WaistDecos.slot3.Skill.Value},
+
+            {skill: props.legsState.Skills.skill1.Skill,value: props.legsState.Skills.skill1.Value},
+            {skill: props.legsState.Skills.skill2.Skill,value: props.legsState.Skills.skill2.Value},
+            {skill: props.legsState.Skills.skill3.Skill,value: props.legsState.Skills.skill3.Value},
+            {skill: props.legsState.Skills.skill4.Skill,value: props.legsState.Skills.skill4.Value},
+            {skill: props.LegsDecos.slot1.Skill.Name, value: props.LegsDecos.slot1.Skill.Value},
+            {skill: props.LegsDecos.slot2.Skill.Name, value: props.LegsDecos.slot2.Skill.Value},
+            {skill: props.LegsDecos.slot3.Skill.Name, value: props.LegsDecos.slot3.Skill.Value},
+
         ])
-    },[props.headState])
+    },[props.armor, props.deco])
 
     useEffect(()=>{
-        console.log(totalSkills)
-        for(let i = 0; i <= skills.length - 1; i++){
-            let inArray = false
-            if(totalSkills.length > 0 && skills.length > 0)
-            {
-                for(let j = 0; i < totalSkills.length - 1; i++){
-                    console.log("inner for", i, totalSkills[j].skill, skills[i].skill, inArray)
-                    if((totalSkills[j].skill) === (skills[i].skill)){
-                        console.log("if succesful", i, j)
-                        setTotalSkills([...totalSkills, totalSkills[j] = {skill: skills[i].skill, value: totalSkills[j].value + skills[i.value]}])
-                        inArray = true
-                        break
-                    }
-                }
-                console.log(i, inArray)
+        setStats({
+            defense: 
+            (props.headState.Stats.defense + props.torsoState.Stats.defense + props.armsState.Stats.defense + props.waistState.Stats.defense + props.legsState.Stats.defense),
+            fireRes: 
+            (props.headState.Stats.fireRes + props.torsoState.Stats.fireRes + props.armsState.Stats.fireRes + props.waistState.Stats.fireRes + props.legsState.Stats.fireRes),
+            waterRes: 
+            (props.headState.Stats.waterRes + props.torsoState.Stats.waterRes + props.armsState.Stats.waterRes + props.waistState.Stats.waterRes + props.legsState.Stats.waterRes),
+            thunderRes: 
+            (props.headState.Stats.thunderRes + props.torsoState.Stats.thunderRes + props.armsState.Stats.thunderRes + props.waistState.Stats.thunderRes + props.legsState.Stats.thunderRes),
+            iceRes: 
+            (props.headState.Stats.iceRes + props.torsoState.Stats.iceRes + props.armsState.Stats.iceRes + props.waistState.Stats.iceRes + props.legsState.Stats.iceRes),
+            dragonRes: 
+            (props.headState.Stats.dragonRes + props.torsoState.Stats.dragonRes + props.armsState.Stats.dragonRes + props.waistState.Stats.dragonRes + props.legsState.Stats.dragonRes),
+        })
+    },[props.armor])
+
+    useEffect(()=>{
+        let uniqueSkills = []
+        skills.map((v)=>{
+            // console.log("enter map", v)
+            let idx = uniqueSkills.findIndex(obj=> obj.skill === v.skill)
+            console.log(idx)
+            if(idx === -1 && v.skill !== "" && v.skill !== "None"){
+                uniqueSkills.push(v)
             }
-            if(inArray === false && skills.length > 0){
-                console.log(skills, i)
-                setTotalSkills([totalSkills, skills[i]])
-            }
-        }
+            else if(uniqueSkills.length > 0 && v.skill !== "" && v.skill !== "None")(
+                uniqueSkills[idx].value = uniqueSkills[idx].value + v.value
+            )
+        })
+        console.log(uniqueSkills)
+        setTotalSkills([...uniqueSkills])
     },[skills])
 
     return(
         <>
-        <button onClick = {()=>{console.log(skills, totalSkills)}}>Test</button>
+        <div>
+            
+        </div>
         </>
     )
 } 
