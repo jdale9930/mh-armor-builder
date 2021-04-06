@@ -1,5 +1,6 @@
 import {react, useEffect, useState} from "react"
 import {connect} from "react-redux"
+import "./totalStatsDisplay.css"
 import axios from "axios"
 
 const TotalStatsDisplay = (props) => {
@@ -95,8 +96,12 @@ const TotalStatsDisplay = (props) => {
 
     return(
         <>
-        <div>
-            
+        <div className = "statsBox">
+            <div>
+                {totalSkills.map((v)=>{
+                    return(<div>{v.skill}{v.value}</div>)
+                })}
+            </div>
         </div>
         </>
     )
