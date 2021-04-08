@@ -196,7 +196,7 @@ export default function DecorationReducer(state = initialState, action){
             if(action.piece = "Legs")
             {return({...state, LegsDecos: initialState.LegsDecos})}
             if(action.piece = "Talisman")
-            {return({...state, LegsDecos: initialState.TalismanDecos})}
+            {return({...state, TalismanDecos: initialState.TalismanDecos})}
             return state;
         default:
             return state;

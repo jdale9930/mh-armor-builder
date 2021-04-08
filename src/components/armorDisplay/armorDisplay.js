@@ -5,6 +5,7 @@ import {equipArmor, unequipArmor, clearArmor, clearDecosFromPiece} from "../../R
 
 const ArmorDisplay = (props) => {
     const [equipped, setEquipped] = useState()
+    const [collapsed, setCollapsed] = useState(false)
     
     useEffect(()=>{
         if(props.headState.Name !== props.name && props.torsoState.Name !== props.name &&
@@ -19,10 +20,25 @@ const ArmorDisplay = (props) => {
     },[props.armor])
     if(props.none === false)
     {return(
+        <>
+        <div>
+            <div className = "armorNameDisplay">
+                <img className = "displayIcon" src={"/images/" + props.piece + ".png"}alt = {`${props.piece}`}/>
+                <div className = "armorName">{props.name}</div> 
+                <div style = {{textAlign: "right"}}>Rarity: {props.rarity}</div>
+                {collapsed === true ? <button className = "collapseButton" onClick = {()=>{setCollapsed(false)}}>Expand</button> :
+                <button className = "collapseButton "onClick = {()=>{setCollapsed(true)}}>Collapse</button>}
+            </div>
+        {collapsed === false &&
         <div className = "armorDisplayContainer">
             <div className = "armorInfoDisplay">
-                <div className = "row">
-                    <img className = "displayIcon" src={"/images/" + props.piece + ".png"}alt = {`${props.piece}`}></img>
+                <div>
+                    Defense: {props.defense}
+                </div>
+                <div>
+                    Slots: {props.slot1}-{props.slot2}-{props.slot3}
+                </div>
+                <div className = "row" style = {{marginTop: "5px"}}>
                     {equipped !== false ? <button className = "equipButton" onClick ={()=>{
                     props.equipArmor(
                         {
@@ -56,26 +72,9 @@ const ArmorDisplay = (props) => {
                     <button className = "equipButton" onClick = {()=>{
                     props.unequipArmor(props.piece);
                     props.clearDecosFromPiece(props.piece);
-                    console.log(props.HeadDecos)
                     }}>Unequip</button>}
                 </div>
-                <div>
-                    {props.name}
-                </div>
-                <div>
-                    Defense: {props.defense}
-                </div>
-                <div>
-                    Slots: {props.slot1}-{props.slot2}-{props.slot3}
-                </div>
                 
-                {/* {equipped !== false ? <button onClick ={()=>{
-                    props.equipArmor(props.name, props.type);
-                    console.log(props.headState)
-                }}>Equip</button>:
-                <button onClick = {()=>{
-                    props.unequipArmor(props.type)
-                }}>Unequip</button>} */}
             </div>
             <div className = "skillDisplay">
                 {props.skill1 !== "" && <div className = "skillRow">
@@ -119,6 +118,9 @@ const ArmorDisplay = (props) => {
                 </div>
             </div>
         </div>
+        }
+        </div>
+        </>
     )}
     else{return(
         <div className = "armorDisplayContainer">

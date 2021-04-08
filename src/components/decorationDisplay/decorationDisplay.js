@@ -133,12 +133,12 @@ const DecorationDisplay = (props) => {
 
             </div>
         </div>
-        :
+        : props.name !== "None" ?
         <div className = "decorationDisplaySet">
             <div className = "armorInfoSet">
                 <div className = "row">
                     <img className = "decorationPic" src={"/images/decoration.png"} alt = "Decoration"></img>
-                    <button className = "equipButton" onClick={()=>{
+                    <button className = "equipButtonDeco" onClick={()=>{
                         console.log(props.name, props.piece, props.slot)
                         props.unequipDeco(props.piece, props.slot);
                         }}>Unequip</button>
@@ -153,6 +153,18 @@ const DecorationDisplay = (props) => {
                     <div className = "skillRow2">{props.skill1Value}</div>
                 </div>}
             </div>
+            </div>
+        </div>
+        :
+        <div className = "decorationDisplaySetInactive">
+            <div className = "armorInfoSet">
+                <div className = "row">
+                    <img className = "decorationPic" src={"/images/decoration.png"} alt = "Decoration"></img>
+                </div>
+                <div>
+                    {props.name}
+                </div>
+        
             </div>
         </div>}
     </>)

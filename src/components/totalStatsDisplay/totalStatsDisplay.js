@@ -102,6 +102,32 @@ const TotalStatsDisplay = (props) => {
                     return(<div>{v.skill}{v.value}</div>)
                 })}
             </div>
+            <div className = "skillDisplay">
+                <div className = "skillRow">
+                    <div className = "skillRow1">Defense:</div>
+                    <div className = "skillRow2">{stats.defense}</div>
+                </div>
+                <div className = "skillRow">
+                    <div className = "skillRow1">Fire Res:</div>
+                    <div className = "skillRow2">{stats.fireRes}</div>
+                </div>
+                <div className = "skillRow">
+                    <div className = "skillRow1">Water Res:</div>
+                    <div className = "skillRow2">{stats.waterRes}</div>
+                </div>
+                <div className = "skillRow">
+                    <div className = "skillRow1">Thunder Res:</div>
+                    <div className = "skillRow2">{stats.thunderRes}</div>
+                </div>
+                <div className = "skillRow">
+                    <div className = "skillRow1">Ice Res:</div>
+                    <div className = "skillRow2">{stats.iceRes}</div>
+                </div>
+                <div className = "skillRow">
+                    <div className = "skillRow1">Dragon Res:</div>
+                    <div className = "skillRow2">{stats.dragonRes}</div>
+                </div>
+            </div>
         </div>
         </>
     )

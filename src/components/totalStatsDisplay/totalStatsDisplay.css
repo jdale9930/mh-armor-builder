@@ -1,0 +1,8 @@
+.statsBox{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: azure;
+    color: black;
+    padding: 5px;
+    width: 520px;
+}
