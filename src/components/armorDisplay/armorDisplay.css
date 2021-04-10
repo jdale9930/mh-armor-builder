@@ -48,19 +48,20 @@
     display: flex;
     flex-flow: row wrap;
     border-bottom: 1px solid black;
-    /* padding: 2px; */
+    padding-left: 2px;
     background-color: rgba(247, 247, 236, 0.9);
+    width: 180px;
     height: 9px;
     line-height: 9px;
 }
 
 .skillRow1{
-    width: 160px;
+    width: 152px;
 }
 
 .skillRow2{
     text-align: right;
-    width: 18px;
+    width: 28px;
 }
 
 .displayIcon{

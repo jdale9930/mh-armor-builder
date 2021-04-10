@@ -323,6 +323,7 @@ const SetDisplay = (props) => {
                 </div>
                 </div>
             </div>
+            <TotalStatsDisplay></TotalStatsDisplay>
         </div>
     )
 }

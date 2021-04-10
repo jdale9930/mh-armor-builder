@@ -150,7 +150,7 @@ const DecorationDisplay = (props) => {
                 </div>
             
             <div className = "skillDisplaySet" style = {{borderTop: "1px solid black"}}>
-                {props.skill1 !== ":" && <div className = "skillRow">
+                {props.skill1 !== ":" && <div className = "skillRow" style = {{width: "130px"}}>
                     <div className = "skillRow1Set">{props.skill1}</div>
                     <div className = "skillRow2">{props.skill1Value}</div>
                 </div>}

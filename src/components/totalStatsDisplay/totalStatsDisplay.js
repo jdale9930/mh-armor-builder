@@ -97,13 +97,25 @@ const TotalStatsDisplay = (props) => {
     return(
         <>
         <div className = "statsBox">
-            <div>
-                {totalSkills.map((v)=>{
-                    return(<div>{v.skill}{v.value}</div>)
+            <div style = {{width: "190px"}}>
+                <div className = "totalName">Total Skills: </div>
+                {totalSkills.map((v, idx)=>{
+                    if(idx < 6){return(<div className = "skillRowDisplay">
+                        <div className = "skillName">{v.skill}</div><div className = "skillValue">{v.value}</div>
+                        </div>)}
                 })}
             </div>
+            <div style = {{width: "190px"}}>
+                {totalSkills.map((v, idx)=>{
+                    if(idx >= 6 && idx < 12){return(<div className = "skillRowDisplay">
+                        <div className = "skillName">{v.skill}</div><div className = "skillValue">{v.value}</div>
+                        </div>)}
+                })}
+            </div>
+            <div style = {{width: "190px"}}>
+                <div className = "totalName">Total Stats:</div>
             <div className = "skillDisplay">
-                <div className = "skillRow">
+                <div className = "skillRow" style = {{borderTop: "1px solid black"}}>
                     <div className = "skillRow1">Defense:</div>
                     <div className = "skillRow2">{stats.defense}</div>
                 </div>
@@ -128,6 +140,7 @@ const TotalStatsDisplay = (props) => {
                     <div className = "skillRow2">{stats.dragonRes}</div>
                 </div>
             </div>
+        </div>
         </div>
         </>
     )
