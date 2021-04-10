@@ -77,6 +77,7 @@ const ArmorDisplay = (props) => {
                 
             </div>
             <div className = "skillDisplay">
+                Skills:
                 {props.skill1 !== "" && <div className = "skillRow">
                     <div className = "skillRow1">{props.skill1}</div>
                     <div className = "skillRow2">{props.skill1Value}</div>

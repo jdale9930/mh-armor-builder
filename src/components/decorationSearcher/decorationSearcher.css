@@ -1,0 +1,9 @@
+.SearchDecoDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    width: 435px;
+    justify-content: center;
+    overflow-y: scroll;
+    height: 400px;
+    margin: auto;
+}

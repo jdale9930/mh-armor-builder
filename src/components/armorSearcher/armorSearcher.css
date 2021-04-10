@@ -5,9 +5,14 @@
     color: black;
     padding: 5px;
     width: 520px;
+    justify-content: center;
 }
 
 .SearchDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    width: 520px;
+    justify-content: center;
     overflow-y: scroll;
     height: 400px;
 }

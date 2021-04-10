@@ -98,41 +98,43 @@ const DecorationDisplay = (props) => {
     return(
         <>
         {props.location !== "setDisplay" ? 
-        <div className = "armorDisplayContainer">
-            <div className = "armorInfoDisplay">
-                <div>
-                    <img className = "decorationPic" src={"/images/decoration.png"} alt = "Decoration"></img>
-                </div>
-                <div>
-                    {props.name}
-                </div>
-                <div>
-                    Slot: {props.slot}
-                </div>
-            </div>
-            <div className = "skillDisplay">
-                {props.skill1 !== ":" && <div className = "skillRow">
+        <>
+        <div className = "decorationNameDisplay">
+            <img className = "decorationPic" src={"/images/decoration.png"} alt = "Decoration"></img>
+            <div className = "decoName">{props.name}</div>
+            <div>Slot: {props.slot}</div>
+        </div>
+        <div className = "decorationDisplayContainer">
+            <div className = "decoSkillDisplay">
+                <div>Skills:</div>
+                {props.skill1 !== ":" && <div className = "skillRow" style = {{borderTop :"1px solid black"}}>
                     <div className = "skillRow1">{props.skill1}</div>
                     <div className = "skillRow2">{props.skill1Value}</div>
                 </div>}
             </div>
 
-            <div className = "skillDisplay">
+            <div className = "decoButtonDisplay">
                 <div>Add Decoration to:</div>
-                {headValid.valid === true && <button
-                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Head", headValid.slot)}}>Head</button>}
-                {torsoValid.valid === true && <button
-                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Torso", torsoValid.slot)}}>Torso</button>}
-                {armsValid.valid === true && <button
-                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Arms", armsValid.slot)}}>Arms</button>}
-                {waistValid.valid === true && <button
-                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Waist", waistValid.slot)}}>Waist</button>}
-                {legsValid.valid === true && <button
-                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Legs", legsValid.slot)}}>Legs</button>}
-                <button>Talisman</button>
+                {headValid.valid === true ? <button className = "decoEquipButton"
+                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Head", headValid.slot)}}>Head</button>
+                :<button className = "decoEquipButton" disabled>Head</button>}
+                {torsoValid.valid === true ? <button className = "decoEquipButton"
+                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Torso", torsoValid.slot)}}>Torso</button>
+                :<button className = "decoEquipButton" disabled>Torso</button>}
+                {armsValid.valid === true ? <button className = "decoEquipButton"
+                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Arms", armsValid.slot)}}>Arms</button>
+                :<button className = "decoEquipButton" disabled>Arms</button>}
+                {waistValid.valid === true ? <button className = "decoEquipButton"
+                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Waist", waistValid.slot)}}>Waist</button>
+                :<button className = "decoEquipButton" disabled>Waist</button>}
+                {legsValid.valid === true ? <button className = "decoEquipButton"
+                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Legs", legsValid.slot)}}>Legs</button>
+                :<button className = "decoEquipButton" disabled>Legs</button>}
+                <button className = "decoEquipButton">Talisman</button>
 
             </div>
         </div>
+        </>
         : props.name !== "None" ?
         <div className = "decorationDisplaySet">
             <div className = "armorInfoSet">

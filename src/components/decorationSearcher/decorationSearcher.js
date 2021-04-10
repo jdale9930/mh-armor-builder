@@ -32,7 +32,7 @@ const DecorationSearcher = () => {
                 </div>
                 <button className = "searchButton" onClick = {()=>{searchDecoration()}}>Search</button>
             </div>
-            <div className = "SearchDisplay">
+            <div className = "SearchDecoDisplay">
                 {searchResults.length > 0 && 
                 searchResults.map((v)=>
                 <DecorationDisplay

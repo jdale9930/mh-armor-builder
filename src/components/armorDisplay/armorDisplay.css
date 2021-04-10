@@ -1,7 +1,7 @@
 .armorDisplayContainer{
     display: flex;
     flex-flow: row wrap;
-    background-color: red;
+    background-color:rgba(245, 245, 220, 0.8);
     border: 2px solid black;
     color: black;
     height: 100px;
