@@ -1,0 +1,28 @@
+.talismanDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    background-color:rgba(245, 245, 220, 0.8);
+    border: 2px solid black;
+    color: black;
+    height: 100px;
+    width:511px;
+}
+
+.talismanNameDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: rgba(73, 73, 63, 0.9);
+    border: 2px solid black;
+    color: white;
+    justify-content: left;
+    font-size: 22px;
+    line-height: 28px;
+    width: 511px;
+}
+
+.talismanSkillDisplay{
+    width: 190px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-top: 5px;
+}

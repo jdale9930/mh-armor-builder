@@ -6,6 +6,7 @@ import SkillMaker from "./components/skillMaker/skillMaker"
 import ArmorSetBuilder from "./components/armorSetBuilder/armorSetBuilder"
 import Login from "./components/login/login"
 import Signup from "./components/login/signup"
+import MyTalismans from "./components/talismans/myTalismans"
 import ProtectedRoutes from "./components/resources/ProtectedRoute"
 import{Switch, Route, BrowserRouter, Redirect, NavLink, useHistory} from "react-router-dom"
 import {Provider} from "react-redux"
@@ -27,6 +28,8 @@ function App(props) {
       <NavLink className = "link" to = "/decorationMaker">Decoration Maker</NavLink>
       <NavLink className = "link" to = "/skillMaker">Skill Maker</NavLink>
       <NavLink className = "link" to = "/armorSetBuilder">Armor Set Maker</NavLink>
+      <NavLink className = "link" to = "/myTalismans">My Talismans</NavLink>
+
     </nav>
     }
       <Switch>
@@ -58,7 +61,16 @@ function App(props) {
         <ProtectedRoutes 
         authRequired = {true}
         path = "/armorSetBuilder" 
-        component = {ArmorSetBuilder}/>
+        component = {ArmorSetBuilder}
+        />
+        <ProtectedRoutes 
+        authRequired = {true}
+        path = "/myTalismans" 
+        component = {MyTalismans}
+        />
+        
+
+
       </Switch>
       <Route path = "*">
         <Redirect to ="/login"/>

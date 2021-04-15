@@ -7,10 +7,10 @@ const TalismanMaker = (props) =>{
 
 function mapStateToProps(state){
     return{
+        currentUser: state.user
     }
 }
 
 const mapDispatchToProps ={
-    currentUser = state.user
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TalismanMaker);
