@@ -15,6 +15,8 @@ const ArmorSetBuilder = (props) => {
     return (
         <div>
             <h1>Armor Set Builder</h1>
+            <h1>{props.currentUser}</h1>
+            {console.log(props.user)}
             <div className = "setBuilderMain">
                 <SetDisplay></SetDisplay>
                 
@@ -47,6 +49,8 @@ function mapStateToProps(state){
         waistState: state.armor.Waist,
         legsState: state.armor.Legs,
         talismanState: state.armor.Talisman,
+        currentUser: state.user.username,
+        user: state.user
     }
 }
 

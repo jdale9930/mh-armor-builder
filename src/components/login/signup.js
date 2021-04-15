@@ -4,27 +4,30 @@ import {Link} from "react-router-dom"
 import {connect} from "react-redux";
 import {login, logout} from "../../Redux/Actions"
 import axios from "axios"
+import {useHistory} from "react-router-dom"
 
-const Login = (props) => {
+const Signup = (props) => {
     const[username, setUsername] = useState("")
     const[password, setPassword] = useState("")
     const[error, setError] = useState("")
+    let history = useHistory()
 
-    async function login(data){
+    async function signup(data){
         setError("")
         console.log(data)
         try{
-            let response = await axios.post("/user/login", data)
+            let response = await axios.post("/user/signup", data)
+            console.log(response)
             if(response.data.success === true){
-                props.login(response.data.data.username, response.data.data.user_id)
+                props.login(response.data.username, response.data.user_id);
                 props.history.push("/armorSetBuilder");
-
             }
             else{setError(response.error)}
         }
         catch(err){
             setError("Something went wrong!")
             console.log(error)
+            // console.log(response.error)
         }
     }
     return(
@@ -43,10 +46,12 @@ const Login = (props) => {
                 <input type = "text" value = {password} onChange = {(evt)=>{setPassword(evt.target.value)}}></input>
             </div>
             <div>{error}</div>
-            <button onClick ={()=>{login({username, password})}}>Login</button>
+            <button onClick ={()=>{signup({username, password})}}>Signup</button>
             <div>
-                Don't have an account? <Link to = "/signup">Sign up here!</Link>
+                Already have an account? <Link to = "/login">Login here!</Link>
             </div>
+            <button onClick = {()=>{props.history.push("/armorSetBuilder")}}>History</button>
+
         </div>
         </>
     )
@@ -61,4 +66,4 @@ const mapDispatchToProps ={
     login,
     logout
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
