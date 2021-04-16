@@ -26,3 +26,18 @@
     border-right: 1px solid black;
     padding-top: 5px;
 }
+
+.talismanMakerDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    background-color:rgba(245, 245, 220, 0.8);
+    border: 2px solid black;
+    color: black;
+    width:511px;
+}
+
+.talismanMakerInputBox{
+    background-color: rgba(247, 247, 236, 0.9);
+    height: 300px;
+    width: 300px;
+}

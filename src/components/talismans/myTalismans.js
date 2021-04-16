@@ -6,7 +6,7 @@ import TalismanDisplay from "./talismanDisplay"
 const MyTalismans = (props) =>{
     return(
         <>
-            <TalismanDisplay
+            {/* <TalismanDisplay
             name = "example"
             rarity = "4"
             skill1 = "Attack Boost"
@@ -17,6 +17,8 @@ const MyTalismans = (props) =>{
             slot2 = "1"
             slot3 = "0"
             />
+        </> */}
+        <TalismanMaker></TalismanMaker>
         </>
     )
 }
