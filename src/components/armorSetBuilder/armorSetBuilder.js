@@ -1,6 +1,7 @@
 import {React, useState} from "react"
 import ArmorSearcher from "../armorSearcher/armorSearcher"
 import DecorationSearcher from "../decorationSearcher/decorationSearcher"
+import TalismanSearcher from "../talismans/talismanSearcher"
 import SetDisplay from "../setDisplay/setDisplay"
 import TotalStatsDisplay from "../totalStatsDisplay/totalStatsDisplay"
 import {connect} from "react-redux";
@@ -16,7 +17,6 @@ const ArmorSetBuilder = (props) => {
         <div>
             <h1>Armor Set Builder</h1>
             <h1>{props.currentUser}</h1>
-            {console.log(props.user)}
             <div className = "setBuilderMain">
                 <SetDisplay></SetDisplay>
                 
@@ -24,6 +24,7 @@ const ArmorSetBuilder = (props) => {
                     <div>
                         <button onClick={()=>{setSearchSelect("Armor")}}>Armor</button>
                         <button onClick={()=>{setSearchSelect("Decoration")}}>Decoration</button>
+                        <button onClick={()=>{setSearchSelect("Talisman")}}>My Talismans</button>
                         <button onClick={()=>{setSearchSelect("TotalStatsDisplay")}}>Stats</button>
 
                     </div>
@@ -32,8 +33,9 @@ const ArmorSetBuilder = (props) => {
                     {searchSelect === "Decoration" &&
                     <DecorationSearcher></DecorationSearcher>}
                     {searchSelect === "TotalStatsDisplay" &&
-                    <TotalStatsDisplay></TotalStatsDisplay>
-                    }
+                    <TotalStatsDisplay></TotalStatsDisplay>}
+                    {searchSelect === "Talisman" &&
+                    <TalismanSearcher location = "BuilderSearch"/>}
                 </div>
             </div>
         </div>

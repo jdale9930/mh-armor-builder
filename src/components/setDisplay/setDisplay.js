@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {equipArmor, unequipArmor, clearArmor} from "../../Redux/Actions"
 import ArmorDisplay from "../armorDisplay/armorDisplay"
 import DecorationDisplay from "../decorationDisplay/decorationDisplay"
+import TalismanDisplay from "../talismans/talismanDisplay"
 import TotalStatsDisplay from "../totalStatsDisplay/totalStatsDisplay"
 import Collapse from 'react-bootstrap/Collapse'
 import Card from "react-bootstrap/Card"
@@ -322,6 +323,57 @@ const SetDisplay = (props) => {
                 </div>
                 </div>
                 </div>
+
+                <div className = "setRow">
+                    <img className = "armorIcon" src="/images/Talisman_Icon_White.png" alt = "Legs"/>
+                    <div className = "armorPieceDisplay">
+                <TalismanDisplay
+                // key = {headState.armor_id}
+                none = {false}
+                location = "Builder"
+                name = {props.talismanState.Name}
+                piece = {props.talismanState.Piece}
+                rarity = {props.talismanState.Rarity}
+                slot1 = {props.talismanState.Slots.slot1.value}
+                slot2 = {props.talismanState.Slots.slot2.value}
+                slot3 = {props.talismanState.Slots.slot3.value}
+                skill1 = {props.talismanState.Skills.skill1.Skill}
+                skill1Value = {props.talismanState.Skills.skill1.Value}
+                skill2 = {props.talismanState.Skills.skill2.Skill}
+                skill2Value = {props.talismanState.Skills.skill2.Value}
+                />
+                <div className = "row">
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.TalismanDecos.slot1.Decoration}
+                    skill1 = {props.TalismanDecos.slot1.Skill.Name}
+                    skill1Value = {props.TalismanDecos.slot1.Skill.Value}
+                    piece = "Talisman"
+                    slot = "1"
+                    />
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.TalismanDecos.slot2.Decoration}
+                    skill1 = {props.TalismanDecos.slot2.Skill.Name}
+                    skill1Value = {props.TalismanDecos.slot2.Skill.Value}
+                    piece = "Talisman"
+                    slot = "2"
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.TalismanDecos.slot3.Decoration}
+                    skill1 = {props.TalismanDecos.slot3.Skill.Name}
+                    skill1Value = {props.TalismanDecos.slot3.Skill.Value}
+                    piece = "Talisman"
+                    slot = "3"
+                    />
+                </div>
+                </div>
+                </div>
             </div>
             <TotalStatsDisplay></TotalStatsDisplay>
         </div>
@@ -342,6 +394,7 @@ function mapStateToProps(state){
         ArmsDecos: state.deco.ArmsDecos,
         WaistDecos: state.deco.WaistDecos,
         LegsDecos: state.deco.LegsDecos,
+        TalismanDecos: state.deco.TalismanDecos
     }
 }
 

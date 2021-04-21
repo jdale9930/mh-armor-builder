@@ -133,6 +133,7 @@ const initialState = {
     Talisman: {
         Name: "None",
         Rarity: 0,
+        Piece: "Talisman",
         Slots: {
             slot1: {value: 0, isFilled: false}, 
             slot2: {value: 0, isFilled: false}, 

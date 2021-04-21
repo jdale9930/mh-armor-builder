@@ -57,6 +57,12 @@ const TotalStatsDisplay = (props) => {
             {skill: props.LegsDecos.slot2.Skill.Name, value: props.LegsDecos.slot2.Skill.Value},
             {skill: props.LegsDecos.slot3.Skill.Name, value: props.LegsDecos.slot3.Skill.Value},
 
+            {skill: props.talismanState.Skills.skill1.Skill,value: props.talismanState.Skills.skill1.Value},
+            {skill: props.talismanState.Skills.skill2.Skill,value: props.talismanState.Skills.skill2.Value},
+            {skill: props.TalismanDecos.slot1.Skill.Name, value: props.TalismanDecos.slot1.Skill.Value},
+            {skill: props.TalismanDecos.slot2.Skill.Name, value: props.TalismanDecos.slot2.Skill.Value},
+            {skill: props.TalismanDecos.slot3.Skill.Name, value: props.TalismanDecos.slot3.Skill.Value},
+
         ])
     },[props.armor, props.deco])
 
@@ -160,6 +166,7 @@ function mapStateToProps(state){
         ArmsDecos: state.deco.ArmsDecos,
         WaistDecos: state.deco.WaistDecos,
         LegsDecos: state.deco.LegsDecos,
+        TalismanDecos: state.deco.TalismanDecos
     }
 }
 

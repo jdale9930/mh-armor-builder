@@ -1,12 +1,17 @@
-import {react, useState} from "react"
+import {react, useEffect, useState} from "react"
 import {connect} from "react-redux";
 import "./talisman.css"
 import {equipArmor, unequipArmor, clearArmor, clearDecosFromPiece} from "../../Redux/Actions"
 
 
 const TalismanDisplay = (props) =>{
-    const [equipped, setEquipped] = useState()
+    const [equipped, setEquipped] = useState(false)
     const [collapsed, setCollapsed] = useState(false)
+
+    useEffect(()=>{
+        props.talisman.name === props.name ? setEquipped(true) : setEquipped(false)
+    },[props.talisman])
+
 return(
     <div>
         <div className = "talismanNameDisplay">
@@ -21,11 +26,11 @@ return(
             {/* <img src = "/images/Talisman_Icon_White.png"></img> */}
             <div className = "talismanSkillDisplay">
                 <div>Skills:</div>
-                {props.skill1 !== ":" && <div className = "skillRow" style = {{borderTop :"1px solid black"}}>
+                {props.skill1 !== "" && <div className = "skillRow" style = {{borderTop :"1px solid black"}}>
                     <div className = "skillRow1">{props.skill1}</div>
                     <div className = "skillRow2">{props.skill1Value}</div>
                 </div>}
-                {props.skill2 !== ":" && <div className = "skillRow" style = {{borderTop :"1px solid black"}}>
+                {props.skill2 !== "" && <div className = "skillRow" style = {{borderTop :"1px solid black"}}>
                     <div className = "skillRow1">{props.skill2}</div>
                     <div className = "skillRow2">{props.skill2Value}</div>
                 </div>}
@@ -33,12 +38,13 @@ return(
             <div className = "talismanSkillDisplay" style = {{width: "317px"}}>
                 <div>Slots:</div>
                 {props.slot1}-{props.slot2}-{props.slot3}
-                {props.location === "armorBuilder" &&
-                props.talisman.name === props.name &&
+                {props.location === "BuilderSearch" &&
+                props.talisman.Name !== props.name &&
                     <button onClick = {()=>{props.equipArmor(
                         {
                             Name: props.name,
                             Rarity: props.rarity,
+                            Piece: "Talisman",
                             Slots: {
                                 slot1: {value: props.slot1, isFilled: false}, 
                                 slot2: {value: props.slot2, isFilled: false}, 
@@ -48,10 +54,13 @@ return(
                                 skill1: {Skill: props.skill1, Value: props.skill1Value},
                                 skill2: {Skill: props.skill2, Value: props.skill2Value},
                             },
-                        }   
+                        }, "Talisman"   
                     )}}>Equip</button>}
-                {props.location === "armorBuilder" &&
-                props.talisman.name !== props.name &&
+                    {props.talisman.Name === props.name && props.location === "BuilderSearch" &&
+                <button onClick = {()=>{props.unequipArmor("Talisman");
+                props.clearDecosFromPiece("Talisman")}}>Unequip</button>}
+
+                {props.talisman.Name === props.name && props.location === "Builder" &&
                 <button onClick = {()=>{props.unequipArmor("Talisman");
                 props.clearDecosFromPiece("Talisman")}}>Unequip</button>}
             </div>
@@ -62,7 +71,7 @@ return(
 
 function mapStateToProps(state){
     return{
-        talisman: state.armor.talisman,
+        talisman: state.armor.Talisman,
         currentUser: state.user
     }
 }

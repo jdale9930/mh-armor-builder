@@ -93,6 +93,22 @@ const DecorationDisplay = (props) => {
         else{setLegsValid(false)}
     },[props.legsState, props.LegsDecos])
 
+    useEffect(()=>{
+        if(props.talismanState.Slots.slot3.value >= props.slot &&
+            props.TalismanDecos.slot3.Decoration === "None"){
+                setTalismanValid({valid: true, slot: 3})
+        }
+        else if(props.talismanState.Slots.slot2.value >= props.slot &&
+            props.TalismanDecos.slot2.Decoration === "None"){
+                setTalismanValid({valid: true, slot: 2})
+        }
+        else if(props.talismanState.Slots.slot1.value >= props.slot &&
+            props.TalismanDecos.slot1.Decoration === "None"){
+                setTalismanValid({valid: true, slot: 1})
+        }
+        else{setTalismanValid(false)}
+    },[props.talismanState, props.TalismanDecos])
+
 
 
     return(
@@ -130,7 +146,10 @@ const DecorationDisplay = (props) => {
                 {legsValid.valid === true ? <button className = "decoEquipButton"
                 onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Legs", legsValid.slot)}}>Legs</button>
                 :<button className = "decoEquipButton" disabled>Legs</button>}
-                <button className = "decoEquipButton">Talisman</button>
+                {talismanValid.valid === true ? <button className = "decoEquipButton"
+                onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Talisman", talismanValid.slot)}}>Talisman</button>
+                :<button className = "decoEquipButton" disabled>Talisman</button>}
+                
 
             </div>
         </div>
@@ -185,7 +204,8 @@ function mapStateToProps(state){
         TorsoDecos: state.deco.TorsoDecos,
         ArmsDecos: state.deco.ArmsDecos,
         WaistDecos: state.deco.WaistDecos,
-        LegsDecos: state.deco.LegsDecos
+        LegsDecos: state.deco.LegsDecos,
+        TalismanDecos: state.deco.TalismanDecos
     }
 }
 

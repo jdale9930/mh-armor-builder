@@ -2,6 +2,8 @@ import {react, useEffect, useState} from "react"
 import {connect} from "react-redux";
 import "./talisman.css"
 import skills from "../resources/skills"
+import axios from "axios"
+
 
 
 const TalismanMaker = (props) =>{
@@ -31,8 +33,8 @@ const TalismanMaker = (props) =>{
             if(!name){
                 throw("Give your talisman a name!")
             }
-            if(name.length > 20){
-                throw("Name must be less than 20 characters")
+            if(name.length > 20 || name.length < 4){
+                throw("Name must be between 4 and 20 characters")
             }
             if(skill1 === skill2){
                 throw("Cannot use the same skill twice!")
@@ -40,7 +42,7 @@ const TalismanMaker = (props) =>{
 
             let skill1Final = skill1
             let skill1ValFinal = skill1Val
-            if(skill1 || skill1Val === 0)
+            if(!skill1 || skill1Val === 0)
             {
                 if(skill2 && skill2Val > 0){
                     skill1Final = skill2
@@ -59,10 +61,28 @@ const TalismanMaker = (props) =>{
 
             let slotFinal = [slot1, slot2, slot3]
             slotFinal.sort()
-            let slot1Final = slotFinal[0]
+            let slot1Final = slotFinal[2]
             let slot2Final = slotFinal[1]
-            let slot3Final = slotFinal[2]
-
+            let slot3Final = slotFinal[0]
+            let data = {
+                user_id: props.currentUser.id,
+                name: name,
+                rarity: rarity,
+                skill1: skill1Final,
+                skill1Value: skill1ValFinal,
+                skill2: skill2Final,
+                skill2Value: skill2ValFinal,
+                slot1: slot1Final,
+                slot2: slot2Final,
+                slot3: slot3Final
+            }
+            console.log("before axios")
+            await axios.post("/talisman/add", data)
+            .then((response)=>{
+                console.log(response.data)
+                console.log(response.data)
+                if(response.data.error){}
+            })
         }
         catch(err){
             return setError(err)
