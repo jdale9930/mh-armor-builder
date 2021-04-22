@@ -1,7 +1,9 @@
 .armorDisplay{
     display: flex;
-    flex-flow: column wrap;
-    flex-basis: 40%;
+    flex-flow: row wrap;
+    width: 600px;
+    height: 500px;
+    overflow-y: scroll;
 }
 
 .armorIcon{
@@ -14,4 +16,21 @@
 .setBuilderMain{
     display: flex;
     flex-flow: row wrap;
+}
+
+.saveArmorSetDisplay{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content:space-evenly;
+    background-color: rgba(247, 247, 236, 0.9);
+    width: 500px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+    padding: 5px;
+}
+
+textarea{
+    resize: none;
 }

@@ -76,12 +76,9 @@ const TalismanMaker = (props) =>{
                 slot2: slot2Final,
                 slot3: slot3Final
             }
-            console.log("before axios")
             await axios.post("/talisman/add", data)
             .then((response)=>{
                 console.log(response.data)
-                console.log(response.data)
-                if(response.data.error){}
             })
         }
         catch(err){

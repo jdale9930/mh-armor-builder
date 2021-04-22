@@ -104,10 +104,10 @@ export default function DecorationReducer(state = initialState, action){
                     return({...state, TalismanDecos: {...state.TalismanDecos, slot1: action.deco}})
                 }
                 if(action.slot === 2){
-                    return({...state, TalismanDecos: {slot2: action.deco}})
+                    return({...state, TalismanDecos: {...state.TalismanDecos, slot2: action.deco}})
                 }
                 if(action.slot === 3){
-                    return({...state, TalsimanDecos: {slot3: action.deco}})
+                    return({...state, TalsimanDecos: {...state.TalismanDecos, slot3: action.deco}})
                 }
             }
             return state;
