@@ -7,6 +7,7 @@ import ArmorSetBuilder from "./components/armorSetBuilder/armorSetBuilder"
 import Login from "./components/login/login"
 import Signup from "./components/login/signup"
 import MyTalismans from "./components/talismans/myTalismans"
+import MyArmorSets from "./components/myArmorSets/myArmorSets"
 import ProtectedRoutes from "./components/resources/ProtectedRoute"
 import{Switch, Route, BrowserRouter, Redirect, NavLink, useHistory} from "react-router-dom"
 import {Provider} from "react-redux"
@@ -24,11 +25,13 @@ function App(props) {
     {props.currentUser &&
     <nav>
       <NavLink className = "link" to = "/login">Login</NavLink>
-      <NavLink className = "link" to = "/armorMaker">Armor Maker</NavLink>
-      <NavLink className = "link" to = "/decorationMaker">Decoration Maker</NavLink>
-      <NavLink className = "link" to = "/skillMaker">Skill Maker</NavLink>
+      {/* <NavLink className = "link" to = "/armorMaker">Armor Maker</NavLink> */}
+      {/* <NavLink className = "link" to = "/decorationMaker">Decoration Maker</NavLink> */}
+      {/* <NavLink className = "link" to = "/skillMaker">Skill Maker</NavLink> */}
       <NavLink className = "link" to = "/armorSetBuilder">Armor Set Maker</NavLink>
       <NavLink className = "link" to = "/myTalismans">My Talismans</NavLink>
+      <NavLink className = "link" to = "/myArmorSets">My Armor Sets</NavLink>
+
 
     </nav>
     }
@@ -58,6 +61,13 @@ function App(props) {
          path = "/skillMaker" 
          component = {SkillMaker}
          />
+
+        <ProtectedRoutes 
+        authRequired = {true}
+        path = "/myArmorSets" 
+        component = {MyArmorSets}
+        />
+
         <ProtectedRoutes 
         authRequired = {true}
         path = "/armorSetBuilder" 

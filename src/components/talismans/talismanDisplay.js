@@ -61,7 +61,7 @@ return(
                 props.clearDecosFromPiece("Talisman")}}>Unequip</button>}
 
                 {props.talisman.Name === props.name && props.location === "Builder" &&
-                <button onClick = {()=>{props.unequipArmor("Talisman");
+                <button onClick = {()=>{props.unequipArmor("Talisman")
                 props.clearDecosFromPiece("Talisman")}}>Unequip</button>}
             </div>
         </div>}

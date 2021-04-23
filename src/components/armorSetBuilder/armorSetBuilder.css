@@ -2,7 +2,7 @@
     display: flex;
     flex-flow: row wrap;
     width: 600px;
-    height: 500px;
+    height: 490px;
     overflow-y: scroll;
 }
 

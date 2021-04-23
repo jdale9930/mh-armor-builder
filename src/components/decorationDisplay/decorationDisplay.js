@@ -150,7 +150,7 @@ const DecorationDisplay = (props) => {
                 onClick ={() =>{props.equipDeco({Decoration: props.name, Skill: {Name: props.skill1, Value: props.skill1Value}}, "Talisman", talismanValid.slot)}}>Talisman</button>
                 :<button className = "decoEquipButton" disabled>Talisman</button>}
                 
-
+                {/* FIX YOUR SHIT */}
             </div>
         </div>
         </>

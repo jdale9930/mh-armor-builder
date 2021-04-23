@@ -95,26 +95,24 @@ const TotalStatsDisplay = (props) => {
                 uniqueSkills[idx].value = uniqueSkills[idx].value + v.value
             )
         })
+        uniqueSkills.sort((a, b) =>(a.value < b.value) ? 1 :
+        (a.value === b.value)? ((a.skill > b.skill) ? 1 : -1): -1)
+
         setTotalSkills([...uniqueSkills])
     },[skills])
 
     return(
         <>
         <div className = "statsBox">
-            <div style = {{width: "190px"}}>
+            <div>
                 <div className = "totalName">Total Skills: </div>
-                {totalSkills.map((v, idx)=>{
-                    if(idx < 6){return(<div className = "skillRowDisplay">
+                    <div style = {{width: "300px", display: "flex", flexFlow: "row wrap"}}>
+                    {totalSkills.map((v, idx)=>{
+                    return(<div className = "skillRowDisplay">
                         <div className = "skillName">{v.skill}</div><div className = "skillValue">{v.value}</div>
-                        </div>)}
-                })}
-            </div>
-            <div style = {{width: "190px"}}>
-                {totalSkills.map((v, idx)=>{
-                    if(idx >= 6 && idx < 12){return(<div className = "skillRowDisplay">
-                        <div className = "skillName">{v.skill}</div><div className = "skillValue">{v.value}</div>
-                        </div>)}
-                })}
+                        </div>)
+                    })}
+                </div>
             </div>
             <div style = {{width: "190px"}}>
                 <div className = "totalName">Total Stats:</div>

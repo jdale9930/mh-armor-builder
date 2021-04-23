@@ -185,17 +185,17 @@ export default function DecorationReducer(state = initialState, action){
             }
             return state;
         case CLEAR_DECOS_FROM_PIECE:
-            if(action.piece = "Head")
+            if(action.piece === "Head")
             {return({...state, HeadDecos: initialState.HeadDecos})}
-            if(action.piece = "Torso")
+            if(action.piece === "Torso")
             {return({...state, TorsoDecos: initialState.TorsoDecos})}
-            if(action.piece = "Arms")
+            if(action.piece === "Arms")
             {return({...state, ArmsDecos: initialState.ArmsDecos})}
-            if(action.piece = "Waist")
+            if(action.piece === "Waist")
             {return({...state, WaistDecos: initialState.WaistDecos})}
-            if(action.piece = "Legs")
+            if(action.piece === "Legs")
             {return({...state, LegsDecos: initialState.LegsDecos})}
-            if(action.piece = "Talisman")
+            if(action.piece === "Talisman")
             {return({...state, TalismanDecos: initialState.TalismanDecos})}
             return state;
         default:

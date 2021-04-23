@@ -23,7 +23,7 @@ const ArmorSetBuilder = (props) => {
             <div className = "setBuilderMain">
                 <SetDisplay></SetDisplay>
                 
-                <div style = {{marginLeft: "auto", width: "500px"}}>
+                <div style = {{margin: "auto", marginTop: "5px", width: "500px"}}>
                     <div>
                         <button onClick={()=>{setSearchSelect("Armor")}}>Armor</button>
                         <button onClick={()=>{setSearchSelect("Decoration")}}>Decoration</button>

@@ -21,7 +21,7 @@ const SetDisplay = (props) => {
     const [open, setOpen] = useState(false);
     
     return (
-        <div>
+        <div style = {{margin: "auto"}}>
             <div className = "armorDisplay">
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Head.png" alt = "Head"/>
@@ -375,7 +375,6 @@ const SetDisplay = (props) => {
                 </div>
                 </div>
             </div>
-            <TotalStatsDisplay></TotalStatsDisplay>
         </div>
     )
 }

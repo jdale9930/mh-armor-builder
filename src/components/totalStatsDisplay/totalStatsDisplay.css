@@ -4,8 +4,8 @@
     background-color: rgba(247, 247, 236, 0.9);
     color: black;
     padding: 5px;
-    width: 580px;
     height: 190px;
+    margin-top: 5px;
 }
 
 .skillRowDisplay{
@@ -30,6 +30,7 @@
 
 .totalName{
     font-size: 24px;
+    width: 100%;
 }
 
 .skillValue{
