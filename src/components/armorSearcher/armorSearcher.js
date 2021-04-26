@@ -2,57 +2,73 @@ import {React, useState} from "react"
 import "./armorSearcher.css"
 import axios from "axios"
 import ArmorDisplay from "../armorDisplay/armorDisplay"
+import skills from "../resources/skills"
 
 const ArmorSearcher = () => {
     const [name, setName] = useState("")
-    const [slots, setSlots] = useState("")
+    const [slots, setSlot] = useState("")
     const [skill, setSkill] = useState("")
     const [armorPiece, setPiece] = useState("")
     //const [armorClass, setClass] = useState("")
     const [searchResults, setSearchResults] = useState([])
     
     async function searchArmor(){
-            let results = await axios.get(`/armor/search?name=${name}&skill=${skill}&slots=%&piece=${armorPiece}`)
+            let results = await axios.get(`/armor/search?name=${name}&skill=${skill}&slots=${slots}&piece=${armorPiece}`)
             // console.log(results)
             setSearchResults(results.data.data)
     }
 
     return(
         <div>
-            <div className = "searchBox">
+            <div className = "armorSearchBoxDisplay">
                 <div>
-                <div className = "row">
-                    <div className = "searchSpacer">Search by Name:</div>
-                    <input type = "text" value = {name}
-                    onChange = {(evt)=>{setName(evt.target.value)}}></input>
-                </div>
+                    <div className = "row">
+                        <div>
+                            <div>Armor Name:</div>
+                            <input type = "text" value = {name}
+                            onChange = {(evt)=>{setName(evt.target.value)}}></input>
+                        </div>
+                        <div>
+                            <div>Skill:</div>
+                            <select value = {skill} onChange = {(evt)=>{setSkill(evt.target.value)}}>
+                                <option value = ""></option>
+                                {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
+                            </select>
+                        </div>
+                    </div>
 
                 <div className = "row">
-                    <div className = "searchSpacer">Search by Skill: </div>
-                    <input type = "text" value = {skill}
-                    onChange = {(evt)=>{setSkill(evt.target.value)}}></input>
-                </div>
-
-                <div className = "row">
-                    <div style = {{width: "120px"}}>Minimum Slots:</div>
-                    <select value = {slots} onChange ={(evt)=>{setSlots(evt.target.value)}}>
-                        <option value = "0">0</option>
-                        <option value = "1">1</option>
-                        <option value = "2">2</option>
-                        <option value = "3">3</option>
-                    </select>
-                    <div style ={{width: "78px", marginLeft: "20px"}}>Type:</div>
-                    <select value = {armorPiece} onChange ={(evt)=>{setPiece(evt.target.value)}}>
+                    <div style = {{width: "153px"}}>
+                        <div>Slot:</div>
+                        <div>
+                            <input type = "radio" id = "slot10" name = "slot1" value = {0}
+                            onChange = {(evt)=>{setSlot(evt.target.value)}}></input>
+                            <label for ="slot10">0</label>
+                            <input type = "radio" id = "slot11" name = "slot1" value = {1}
+                            onChange = {(evt)=>{setSlot(evt.target.value)}}></input>
+                            <label for ="slot11">1</label>
+                            <input type = "radio" id = "slot12" name = "slot1" value = {2}
+                            onChange = {(evt)=>{setSlot(evt.target.value)}}></input>
+                            <label for ="slot12">2</label>
+                            <input type = "radio" id = "slot13" name = "slot1" value = {3}
+                            onChange = {(evt)=>{setSlot(evt.target.value)}}></input>
+                            <label for ="slot13">3</label>
+                        </div>
+                    </div>
+                    <div>
+                    <div>Type:</div>
+                    <select value = {armorPiece} style = {{width: "146px"}}onChange ={(evt)=>{setPiece(evt.target.value)}}>
                         <option value = ""></option>
                         <option value = "Head">Head</option>
                         <option value = "Torso">Torso</option>
                         <option value = "Arms">Arms</option>
                         <option value = "Waist">Waist</option>
                         <option value = "Legs">Legs</option>
-                    </select>
+                    </select> 
+                    </div>
                 </div>
                 </div>
-                <button className = "searchButton" onClick = {()=>{searchArmor()}}>Search</button>
+                <button onClick = {()=>{searchArmor()}} style = {{width: "180px", margin: "5px"}}>Search</button>
             </div>
             <div className = "SearchDisplay">
                 {searchResults.length > 0 && 

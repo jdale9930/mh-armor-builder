@@ -11,7 +11,8 @@ const MyArmorSets = (props) =>{
 
     useEffect(()=>{searchArmorSets()},[])
     async function searchArmorSets(){
-        let results = await axios.get(`/armorset/search?id=${props.currentUser.id}&name=${name}&skill=${skill}&slots=${weapon}`,{user_id: props.currentUser.id})
+        let results = await axios.get(`/armorset/search?id=${props.currentUser.id}&name=${name}&skill=${skill}&weapon=${weapon}`,{user_id: props.currentUser.id})
+        console.log(results.data)
         setArmorSets(results.data.data)}
     return(
         <div>
@@ -33,7 +34,7 @@ const MyArmorSets = (props) =>{
                 arms = {v.arms}
                 waist = {v.waist}
                 legs = {v.legs}
-                talisman = {v .talisman}
+                talisman = {v .talisman_id}
                 skill1 = {v.skill1}
                 skill1Value = {v.skill1Value}
                 skill2 = {v.skill2}
@@ -84,6 +85,7 @@ const MyArmorSets = (props) =>{
                 talismanSlot1 = {v.talismanSlot1}
                 talismanSlot2 = {v.talismanSlot2}
                 talismanSlot3 = {v.talismanSlot3}
+                history = {props.history}
                 />
             })}
             </div>

@@ -114,7 +114,7 @@ const DecorationDisplay = (props) => {
     return(
         <>
         {props.location !== "setDisplay" ? 
-        <>
+        <div>
         <div className = "decorationNameDisplay">
             <img className = "decorationPic" src={"/images/decoration.png"} alt = "Decoration"></img>
             <div className = "decoName">{props.name}</div>
@@ -153,16 +153,15 @@ const DecorationDisplay = (props) => {
                 {/* FIX YOUR SHIT */}
             </div>
         </div>
-        </>
+        </div>
         : props.name !== "None" ?
         <div className = "decorationDisplaySet">
             <div className = "armorInfoSet">
                 <div className = "row">
                     <img className = "decorationPic" src={"/images/decoration.png"} alt = "Decoration"></img>
-                    <button className = "equipButtonDeco" onClick={()=>{
-                        console.log(props.name, props.piece, props.slot)
+                    {props.myArmorSet !== true &&<button className = "equipButtonDeco" onClick={()=>{
                         props.unequipDeco(props.piece, props.slot);
-                        }}>Unequip</button>
+                        }}>Unequip</button>}
                 </div>
                 <div>
                     {props.name}

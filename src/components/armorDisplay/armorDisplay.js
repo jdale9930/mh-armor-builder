@@ -39,7 +39,7 @@ const ArmorDisplay = (props) => {
                     Slots: {props.slot1}-{props.slot2}-{props.slot3}
                 </div>
                 <div className = "row" style = {{marginTop: "5px"}}>
-                    {equipped !== false ? <button className = "equipButton" onClick ={()=>{
+                    {props.myArmorSet !== true && equipped !== false ? <button className = "equipButton" onClick ={()=>{
                     props.equipArmor(
                         {
                             Name: props.name,
@@ -69,6 +69,7 @@ const ArmorDisplay = (props) => {
                         props.piece);
                     // console.log(props.headState)
                     }}>Equip</button>:
+                    props.myArmorSet !== true &&
                     <button className = "equipButton" onClick = {()=>{
                     props.unequipArmor(props.piece);
                     props.clearDecosFromPiece(props.piece);

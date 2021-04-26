@@ -1,8 +1,7 @@
 .myTalismansDisplay{
     display: flex;
     flex-flow: column wrap;
-    background-color:rgba(245, 245, 220, 0.8);
-    color: black;
+    color: white
 }
 
 .talismanDisplay{
@@ -49,6 +48,8 @@
     background-color: rgba(247, 247, 236, 0.9);
     height: 300px;
     width: 300px;
+    margin: auto;
+    padding: 5px;
 }
 
 .viewButton{
@@ -62,8 +63,7 @@
     flex-flow: row wrap;
     justify-content:space-evenly;
     background-color: rgba(247, 247, 236, 0.9);
-    max-width: 500px;
-    margin: auto;
+    width: 500px;
     margin-top: 5px;
     margin-bottom: 5px;
     color: black;

@@ -24,7 +24,7 @@ function App(props) {
     <main>
     {props.currentUser &&
     <nav>
-      <NavLink className = "link" to = "/login">Login</NavLink>
+      {props.currentUser === "" && <NavLink className = "link" to = "/login">Login</NavLink>}
       {/* <NavLink className = "link" to = "/armorMaker">Armor Maker</NavLink> */}
       {/* <NavLink className = "link" to = "/decorationMaker">Decoration Maker</NavLink> */}
       {/* <NavLink className = "link" to = "/skillMaker">Skill Maker</NavLink> */}
@@ -82,9 +82,10 @@ function App(props) {
 
 
       </Switch>
-      <Route path = "*">
-        <Redirect to ="/login"/>
-      </Route>
+      {/* <Route path = "*">
+        {props.currentUser === "" ? <Redirect to ="/login"/>:
+        <Redirect to="/armorSetBuilder"/>}
+      </Route> */}
         {/* <ArmorMaker></ArmorMaker> */}
         </main>
     </BrowserRouter>
