@@ -5,9 +5,6 @@ import TalismanDisplay from "./talismanDisplay"
 import {connect} from "react-redux";
 import skills from "../resources/skills"
 
-
-
-
 const TalismanSearcher = (props) =>{
     const [talismans, setTalismans] = useState([])
     const [name, setName] = useState("")
@@ -23,7 +20,7 @@ return (
 <div className = "talismanSearchMain">
     <div className = "talismanSearchDisplay">
         <div>
-            <div>Name:</div>
+            <div>Talisman Name:</div>
             <input type = "text" value = {name} onChange = {(evt)=>{setName(evt.target.value)}}></input>
         </div>
         <div>
