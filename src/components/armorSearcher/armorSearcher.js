@@ -14,7 +14,6 @@ const ArmorSearcher = () => {
     
     async function searchArmor(){
             let results = await axios.get(`/armor/search?name=${name}&skill=${skill}&slots=${slots}&piece=${armorPiece}`)
-            // console.log(results)
             setSearchResults(results.data.data)
     }
 
@@ -43,16 +42,16 @@ const ArmorSearcher = () => {
                         <div>
                             <input type = "radio" id = "slot10" name = "slot1" value = {0}
                             onChange = {(evt)=>{setSlot(evt.target.value)}}></input>
-                            <label for ="slot10">0</label>
+                            <label htmlFor ="slot10">0</label>
                             <input type = "radio" id = "slot11" name = "slot1" value = {1}
                             onChange = {(evt)=>{setSlot(evt.target.value)}}></input>
-                            <label for ="slot11">1</label>
+                            <label htmlFor ="slot11">1</label>
                             <input type = "radio" id = "slot12" name = "slot1" value = {2}
                             onChange = {(evt)=>{setSlot(evt.target.value)}}></input>
-                            <label for ="slot12">2</label>
+                            <label htmlFor ="slot12">2</label>
                             <input type = "radio" id = "slot13" name = "slot1" value = {3}
                             onChange = {(evt)=>{setSlot(evt.target.value)}}></input>
-                            <label for ="slot13">3</label>
+                            <label htmlFor ="slot13">3</label>
                         </div>
                     </div>
                     <div>

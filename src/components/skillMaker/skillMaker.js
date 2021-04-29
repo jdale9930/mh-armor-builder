@@ -27,8 +27,6 @@ const SkillMaker = () =>{
         }
         catch(err){
             setError("Something went wrong!")
-            console.log(error)
-            // console.log(response.error)
         }
     }
 

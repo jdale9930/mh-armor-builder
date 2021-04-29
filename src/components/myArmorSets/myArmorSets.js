@@ -12,7 +12,6 @@ const MyArmorSets = (props) =>{
     useEffect(()=>{searchArmorSets()},[])
     async function searchArmorSets(){
         let results = await axios.get(`/armorset/search?id=${props.currentUser.id}&name=${name}&skill=${skill}&weapon=${weapon}`,{user_id: props.currentUser.id})
-        console.log(results.data)
         setArmorSets(results.data.data)}
     return(
         <div>

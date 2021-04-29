@@ -86,7 +86,6 @@ const TotalStatsDisplay = (props) => {
     useEffect(()=>{
         let uniqueSkills = []
         skills.map((v)=>{
-            // console.log("enter map", v)
             let idx = uniqueSkills.findIndex(obj=> obj.skill === v.skill)
             if(idx === -1 && v.skill !== "" && v.skill !== "None"){
                 uniqueSkills.push(v)

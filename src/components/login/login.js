@@ -12,7 +12,6 @@ const Login = (props) => {
 
     async function login(data){
         setError("")
-        console.log(data)
         try{
             let response = await axios.post("/user/login", data)
             if(response.data.success === true){
@@ -24,7 +23,6 @@ const Login = (props) => {
         }
         catch(err){
             setError("Something went wrong!")
-            console.log(error)
         }
     }
     return(
@@ -40,7 +38,7 @@ const Login = (props) => {
             </div>
             <div>
                 Password: 
-                <input type = "text" value = {password} onChange = {(evt)=>{setPassword(evt.target.value)}}></input>
+                <input type = "password" value = {password} onChange = {(evt)=>{setPassword(evt.target.value)}}></input>
             </div>
             <div>{error}</div>
             <button onClick ={()=>{login({username, password})}}>Login</button>

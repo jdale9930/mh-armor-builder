@@ -1,19 +1,18 @@
 
 import './App.css';
-import ArmorMaker from "./components/armor-maker/armorMaker"
-import DecorationMaker from "./components/decorationMaker/decorationMaker"
-import SkillMaker from "./components/skillMaker/skillMaker"
+// import ArmorMaker from "./components/armor-maker/armorMaker"
+// import DecorationMaker from "./components/decorationMaker/decorationMaker"
+// import SkillMaker from "./components/skillMaker/skillMaker"
 import ArmorSetBuilder from "./components/armorSetBuilder/armorSetBuilder"
 import Login from "./components/login/login"
 import Signup from "./components/login/signup"
 import MyTalismans from "./components/talismans/myTalismans"
 import MyArmorSets from "./components/myArmorSets/myArmorSets"
 import ProtectedRoutes from "./components/resources/ProtectedRoute"
-import{Switch, Route, BrowserRouter, Redirect, NavLink, useHistory} from "react-router-dom"
+import{Switch, Route, BrowserRouter, Redirect, NavLink} from "react-router-dom"
 import {Provider} from "react-redux"
 import store from "./Redux/store"
 import {connect} from "react-redux";
-import { propTypes } from 'react-bootstrap/esm/Image';
 
 
 function App(props) {

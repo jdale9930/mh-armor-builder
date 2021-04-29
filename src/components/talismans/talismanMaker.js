@@ -78,7 +78,6 @@ const TalismanMaker = (props) =>{
             }
             await axios.post("/talisman/add", data)
             .then((response)=>{
-                console.log(response.data)
             })
         }
         catch(err){
@@ -136,48 +135,48 @@ const TalismanMaker = (props) =>{
                     <div>Slot 1:</div>
                     <input type = "radio" id = "slot10" name = "slot1" value = {0}
                     onChange = {(evt)=>{setSlot1(evt.target.value)}}></input>
-                    <label for ="slot10">0</label>
+                    <label htmlFor ="slot10">0</label>
                     <input type = "radio" id = "slot11" name = "slot1" value = {1}
                     onChange = {(evt)=>{setSlot1(evt.target.value)}}></input>
-                    <label for ="slot11">1</label>
+                    <label htmlFor ="slot11">1</label>
                     <input type = "radio" id = "slot12" name = "slot1" value = {2}
                     onChange = {(evt)=>{setSlot1(evt.target.value)}}></input>
-                    <label for ="slot12">2</label>
+                    <label htmlFor ="slot12">2</label>
                     <input type = "radio" id = "slot13" name = "slot1" value = {3}
                     onChange = {(evt)=>{setSlot1(evt.target.value)}}></input>
-                    <label for ="slot13">3</label>
+                    <label htmlFor ="slot13">3</label>
                 </div>
 
                 <div>
                     <div>Slot 2:</div>
                     <input type = "radio" id = "slot20" name = "slot2" value = {0}
                     onChange = {(evt)=>{setSlot2(evt.target.value)}}></input>
-                    <label for ="slot20">0</label>
+                    <label htmlFor ="slot20">0</label>
                     <input type = "radio" id = "slot21" name = "slot2" value = {1}
                     onChange = {(evt)=>{setSlot2(evt.target.value)}}></input>
-                    <label for ="slot21">1</label>
+                    <label htmlFor ="slot21">1</label>
                     <input type = "radio" id = "slot22" name = "slot2" value = {2}
                     onChange = {(evt)=>{setSlot2(evt.target.value)}}></input>
-                    <label for ="slot22">2</label>
+                    <label htmlFor ="slot22">2</label>
                     <input type = "radio" id = "slot23" name = "slot2" value = {3}
                     onChange = {(evt)=>{setSlot2(evt.target.value)}}></input>
-                    <label for ="slot23">3</label>
+                    <label htmlFor ="slot23">3</label>
                 </div>
 
                 <div>
                     <div>Slot 3:</div>
                     <input type = "radio" id = "slot30" name = "slot3" value = {0}
                     onChange = {(evt)=>{setSlot3(evt.target.value)}}></input>
-                    <label for ="slot30">0</label>
+                    <label htmlFor ="slot30">0</label>
                     <input type = "radio" id = "slot31" name = "slot3" value = {1}
                     onChange = {(evt)=>{setSlot3(evt.target.value)}}></input>
-                    <label for ="slot31">1</label>
+                    <label htmlFor ="slot31">1</label>
                     <input type = "radio" id = "slot32" name = "slot3" value = {2}
                     onChange = {(evt)=>{setSlot3(evt.target.value)}}></input>
-                    <label for ="slot32">2</label>
+                    <label htmlFor ="slot32">2</label>
                     <input type = "radio" id = "slot33" name = "slot3" value = {3}
                     onChange = {(evt)=>{setSlot3(evt.target.value)}}></input>
-                    <label for ="slot33">3</label>
+                    <label htmlFor ="slot33">3</label>
                 </div>
                 <div style = {{color: "red"}}>{error}</div>
                 <button onClick = {()=>{submit()}}>Create Talisman</button>

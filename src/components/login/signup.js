@@ -14,20 +14,16 @@ const Signup = (props) => {
 
     async function signup(data){
         setError("")
-        console.log(data)
         try{
             let response = await axios.post("/user/signup", data)
-            console.log(response)
             if(response.data.success === true){
-                props.login(response.data.username, response.data.user_id);
+                props.login(response.data.data.username, response.data.data.user_id);
                 props.history.push("/armorSetBuilder");
             }
-            else{setError(response.error)}
+            else{setError(response.data.error)}
         }
         catch(err){
             setError("Something went wrong!")
-            console.log(error)
-            // console.log(response.error)
         }
     }
     return(
@@ -43,14 +39,13 @@ const Signup = (props) => {
             </div>
             <div>
                 Password: 
-                <input type = "text" value = {password} onChange = {(evt)=>{setPassword(evt.target.value)}}></input>
+                <input type = "password" value = {password} onChange = {(evt)=>{setPassword(evt.target.value)}}></input>
             </div>
             <div>{error}</div>
             <button onClick ={()=>{signup({username, password})}}>Signup</button>
             <div>
                 Already have an account? <Link to = "/login">Login here!</Link>
             </div>
-            <button onClick = {()=>{props.history.push("/armorSetBuilder")}}>History</button>
 
         </div>
         </>

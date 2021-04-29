@@ -67,7 +67,6 @@ const ArmorDisplay = (props) => {
                                 },
                             },
                         props.piece);
-                    // console.log(props.headState)
                     }}>Equip</button>:
                     props.myArmorSet !== true &&
                     <button className = "equipButton" onClick = {()=>{

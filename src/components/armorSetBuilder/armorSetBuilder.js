@@ -43,8 +43,7 @@ const ArmorSetBuilder = (props) => {
     useEffect(()=>{searchArmorSets()},[])
     async function searchArmorSets(){
         let results = await axios.get(`/armorset/search?id=${props.currentUser.id}&name=&skill=&slots=`,{user_id: props.currentUser.id})
-        setSavedArmorSets(results.data.data)
-        console.log(savedArmorSets)}
+        setSavedArmorSets(results.data.data)}
 
         async function LoadArmorSet(){
             props.clearArmor()

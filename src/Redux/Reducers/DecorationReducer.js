@@ -1,4 +1,4 @@
-import {CLEAR_ALL_DECOS} from "../Actions"
+// import {CLEAR_ALL_DECOS} from "../Actions"
 import {CLEAR_DECOS_FROM_PIECE} from "../Actions"
 import {EQUIP_DECO} from "../Actions";
 import {UNEQUIP_DECO} from "../Actions";
@@ -115,7 +115,6 @@ export default function DecorationReducer(state = initialState, action){
 
         case UNEQUIP_DECO:
             if(action.piece === "Head"){
-                console.log("Head")
                 if(action.slot === "1"){
                     return({...state, HeadDecos: {...state.HeadDecos, slot1: {Decoration: "None", Skill: {Name: "None", Value: 0}}}})
                 }
@@ -127,9 +126,7 @@ export default function DecorationReducer(state = initialState, action){
                 }
             }
             if(action.piece === "Torso"){
-                console.log(state.TorsoDecos)
                 if(action.slot === "1"){
-                    console.log("slot 1")
                     return({...state, TorsoDecos: {...state.TorsoDecos, slot1: {Decoration: "None", Skill: {Name: "None", Value: 0}}}})
                 }
                 if(action.slot === "2"){

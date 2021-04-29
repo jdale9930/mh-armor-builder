@@ -90,7 +90,6 @@ const SaveArmorSet = (props) =>{
     useEffect(()=>{
         let uniqueSkills = []
         skills.map((v)=>{
-            // console.log("enter map", v)
             let idx = uniqueSkills.findIndex(obj=> obj.skill === v.skill)
             if(idx === -1 && v.skill !== "" && v.skill !== "None"){
                 uniqueSkills.push(v)
@@ -109,7 +108,6 @@ const SaveArmorSet = (props) =>{
         for(let i = 0; i < 16; i++){
             !savedSkills[i] && savedSkills.push({skill: "", value: 0})
         }
-        console.log(savedSkills)
         let data = {
             user_id: props.currentUser.id,
             name: name,
@@ -178,7 +176,6 @@ const SaveArmorSet = (props) =>{
             talismanSlot2: props.TalismanDecos.slot2.Decoration,
             talismanSlot3: props.TalismanDecos.slot3.Decoration
         }
-        console.log(data)
         await axios.post("/armorset/add",data)
         .then((response)=>{
             setError(response.data.error)})
