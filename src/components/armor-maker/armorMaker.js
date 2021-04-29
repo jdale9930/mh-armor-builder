@@ -129,7 +129,7 @@ const ArmorMaker = () =>{
                     {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
                 <input type = "number" value = {skill2Val} style = {{width: "25px"}}
-                    onChange = {(evt)=>{setSkill3Val(evt.target.value)}}></input>                
+                    onChange = {(evt)=>{setSkill2Val(evt.target.value)}}></input>                
                     <button onClick ={()=>{setSkill2(""); setSkill2Val(0)}}>Clear Skill 2</button>
             </div>
 

@@ -25,7 +25,7 @@ function App(props) {
     {props.currentUser &&
     <nav>
       {props.currentUser === "" && <NavLink className = "link" to = "/login">Login</NavLink>}
-      <NavLink className = "link" to = "/armorMaker">Armor Maker</NavLink>
+      {/* <NavLink className = "link" to = "/armorMaker">Armor Maker</NavLink> */}
       {/* <NavLink className = "link" to = "/decorationMaker">Decoration Maker</NavLink> */}
       {/* <NavLink className = "link" to = "/skillMaker">Skill Maker</NavLink> */}
       <NavLink className = "link" to = "/armorSetBuilder">Armor Set Maker</NavLink>
@@ -46,7 +46,7 @@ function App(props) {
         path = "/signup" 
         component = {Signup}
         />
-        <ProtectedRoutes 
+        {/* <ProtectedRoutes 
         authRequired = {true}
         path = "/armorMaker" 
         component = {ArmorMaker}
@@ -60,7 +60,7 @@ function App(props) {
         authRequired = {true}
          path = "/skillMaker" 
          component = {SkillMaker}
-         />
+         /> */}
 
         <ProtectedRoutes 
         authRequired = {true}
