@@ -117,8 +117,9 @@ const ArmorMaker = () =>{
                     <option value = ""></option>
                     {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
-                <input type ="text" value = {skill1Val} onChange ={(evt)=>{setSkill1Val(evt.target.value)}}></input>
-                <button onClick ={()=>{setSkill1(""); setSkill1Val("")}}>Clear Skill 1</button>
+                <input type = "number" value = {skill1Val} style = {{width: "25px"}}
+                    onChange = {(evt)=>{setSkill1Val(evt.target.value)}}></input>                
+                    <button onClick ={()=>{setSkill1(""); setSkill1Val(0)}}>Clear Skill 1</button>
             </div>
 
             <div>
@@ -127,8 +128,9 @@ const ArmorMaker = () =>{
                     <option value = ""></option>
                     {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
-                <input type ="text" value = {skill2Val} onChange ={(evt)=>{setSkill2Val(evt.target.value)}}></input>
-                <button onClick ={()=>{setSkill2(""); setSkill2Val("")}}>Clear Skill 2</button>
+                <input type = "number" value = {skill2Val} style = {{width: "25px"}}
+                    onChange = {(evt)=>{setSkill3Val(evt.target.value)}}></input>                
+                    <button onClick ={()=>{setSkill2(""); setSkill2Val(0)}}>Clear Skill 2</button>
             </div>
 
             <div>
@@ -137,8 +139,9 @@ const ArmorMaker = () =>{
                     <option value = ""></option>
                     {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
-                <input type ="text" value = {skill3Val} onChange ={(evt)=>{setSkill3Val(evt.target.value)}}></input>
-                <button onClick ={()=>{setSkill3(""); setSkill3Val("")}}>Clear Skill 3</button>
+                <input type = "number" value = {skill3Val} style = {{width: "25px"}}
+                    onChange = {(evt)=>{setSkill3Val(evt.target.value)}}></input>                
+                    <button onClick ={()=>{setSkill3(""); setSkill3Val(0)}}>Clear Skill 3</button>
             </div>
 
             <div>
@@ -147,43 +150,44 @@ const ArmorMaker = () =>{
                     <option value = ""></option>
                     {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
-                <input type ="text" value = {skill4Val} onChange ={(evt)=>{setSkill4Val(evt.target.value)}}></input>
-                <button onClick ={()=>{setSkill4(""); setSkill4Val("")}}>Clear Skill 4</button>
+                    <input type = "number" value = {skill4Val} style = {{width: "25px"}}
+                    onChange = {(evt)=>{setSkill4Val(evt.target.value)}}></input>                
+                    <button onClick ={()=>{setSkill4(""); setSkill4Val(0)}}>Clear Skill 4</button>
             </div>
 
             <div>
                 Defense:
-                <input type = "text" value = {defense} placeholder = "0"
-                onChange = {(evt)=>{setDefense(evt.target.value)}}></input>
+                <input type = "number" value = {defense} style = {{width: "50px"}}
+                    onChange = {(evt)=>{setDefense(evt.target.value)}}></input>
             </div>
 
             <div>
                 Fire Res:
-                <input type = "text" value = {fireRes} placeholder = "0"
+                <input type = "number" value = {fireRes} style = {{width: "25px"}}
                 onChange = {(evt)=>{setFireRes(evt.target.value)}}></input>
             </div>
 
             <div>
                 Water Res:
-                <input type = "text" value = {waterRes} placeholder = "0"
+                <input type = "number" value = {waterRes} style = {{width: "25px"}}
                 onChange = {(evt)=>{setWaterRes(evt.target.value)}}></input>
             </div>
 
             <div>
                 Thunder Res:
-                <input type = "text" value = {thunderRes} placeholder = "0"
+                <input type = "number" value = {thunderRes} style = {{width: "25px"}}
                 onChange = {(evt)=>{setThunderRes(evt.target.value)}}></input>
             </div>
 
             <div>
                 Ice Res:
-                <input type = "text" value = {iceRes} placeholder = "0"
+                <input type = "number" value = {iceRes} style = {{width: "25px"}}
                 onChange = {(evt)=>{setIceRes(evt.target.value)}}></input>
             </div>
 
             <div>
                 Dragon Res:
-                <input type = "text" value = {dragonRes} placeholder = "0"
+                <input type = "number" value = {dragonRes} style = {{width: "25px"}}
                 onChange = {(evt)=>{setDragonRes(evt.target.value)}}></input>
             </div>
 
