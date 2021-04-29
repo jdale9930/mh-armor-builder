@@ -3,192 +3,376 @@ import {connect} from "react-redux";
 import {equipArmor, unequipArmor, clearArmor} from "../../Redux/Actions"
 import ArmorDisplay from "../armorDisplay/armorDisplay"
 import DecorationDisplay from "../decorationDisplay/decorationDisplay"
+import TalismanDisplay from "../talismans/talismanDisplay"
+import TotalStatsDisplay from "../totalStatsDisplay/totalStatsDisplay"
+import Collapse from 'react-bootstrap/Collapse'
+import Card from "react-bootstrap/Card"
+import "../decorationDisplay/decorationDisplay.css"
+
 import axios from "axios"
 import "./setDisplay.css"
 
 const SetDisplay = (props) => {
     const [HeadDecoArray, setHeadDecoArray] = useState([])
-    const [headLocal, setHeadLocal] = useState({
-        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
-    const [torsoLocal, setTorsoLocal] = useState({
-        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
-    const [armsLocal, setArmsLocal] = useState({
-        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
-    const [waistLocal, setWaistLocal] = useState({
-        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
-    const [legsLocal, setLegsLocal] = useState({
-        name: "None", skill1: ":", skill2: ":", skill3: ":", skill4: ":"})
-
-    useEffect(()=>{
-        axios.get(`/armor/search?name=${props.headState}&skill=%&slots=%&type=Head`)
-        .then(response => setHeadLocal(response.data.data[0]))
-        // .then(console.log(headLocal))
-        // .then(console.log(headLocal.skill1))
-    },[props.headState])
-
-    useEffect(()=>{
-        axios.get(`/armor/search?name=${props.torsoState}&skill=%&slots=%&type=Torso`)
-        .then(response => setTorsoLocal(response.data.data[0]))
-        // .then(console.log(headLocal))
-        // .then(console.log(headLocal.skill1))
-    },[props.torsoState])
-
-    useEffect(()=>{
-        axios.get(`/armor/search?name=${props.armsState}&skill=%&slots=%&type=Arms`)
-        .then(response => setArmsLocal(response.data.data[0]))
-    },[props.armsState])
-
-    useEffect(()=>{
-        axios.get(`/armor/search?name=${props.waistState}&skill=%&slots=%&type=Waist`)
-        .then(response => setWaistLocal(response.data.data[0]))
-    },[props.waistState])
-
-    useEffect(()=>{
-        axios.get(`/armor/search?name=${props.legsState}&skill=%&slots=%&type=Legs`)
-        .then(response => setLegsLocal(response.data.data[0]))
-    },[props.legsState])
+    const [TorsoDecoArray, setTorsoDecoArray] = useState([])
+    const [ArmsDecoArray, setArmsDecoArray] = useState([])
+    const [WaistDecoArray, setWaistDecoArray] = useState([])
+    const [LegsDecoArray, setLegsDecoArray] = useState([])
+    const [open, setOpen] = useState(false);
     
-    useEffect(()=>{
-        setHeadDecoArray([])
-        for(let i = 0; i < props.HeadDecos.length; i++){
-            axios.get(`/decoration/search?name=${props.HeadDecos[i].deco}&skill=%`)
-            .then(response =>{
-                setHeadDecoArray([])
-                response.data.data.map((v) =>{
-                let decoInf = {
-                    name: response.data.data[0].name,
-                    skill1: response.data.data[0].skill1,
-                    skill2: response.data.data[0].skill2,
-                    slots: response.data.data[0].slots,}
-                    setHeadDecoArray([...HeadDecoArray, decoInf])
-                    console.log(HeadDecoArray)
-                })})
-            }
-        },[props.HeadDecos])
-
     return (
-        <div>
+        <div style = {{margin: "auto"}}>
             <div className = "armorDisplay">
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Head.png" alt = "Head"/>
-                    {props.headState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
-                key = {headLocal.armor_id}
-                none = {false}
-                name = {headLocal.name}
-                type = {headLocal.type}
-                class = {headLocal.class}
-                skill1 = {headLocal.skill1}
-                skill2 = {headLocal.skill2}
-                skill3 = {headLocal.skill3}
-                skill4 = {headLocal.skill4}
-                defense = {headLocal.defense}
-                fireRes = {headLocal.fireRes}
-                waterRes = {headLocal.waterRes}
-                thunderRes = {headLocal.thunderRes}
-                iceRes = {headLocal.iceRes}
-                dragonRes = {headLocal.dragonRes}
-                slots = {headLocal.slots}
-                rarity = {headLocal.rarity}
-                />}
-                </div>
-                <div className = "row">
-                {props.HeadDecos.length > 0 && HeadDecoArray.map((v) =>
-                    <DecorationDisplay
-                        name = {v.name}
-                        skill1 = {v.skill1}
-                        skill2 = {v.skill2}
-                        slots = {v.slots}
-                        location = "setDisplay"
-                    />
-                )}
+                    <div className = "armorPieceDisplay">
+                        <ArmorDisplay
+                        none = {false}
+                        name = {props.headState.Name}
+                        piece = {props.headState.Piece}
+                        rarity = {props.headState.Rarity}
+                        slot1 = {props.headState.Slots.slot1.Value}
+                        slot2 = {props.headState.Slots.slot2.Value}
+                        slot3 = {props.headState.Slots.slot3.Value}
+                        skill1 = {props.headState.Skills.skill1.Skill}
+                        skill1Value = {props.headState.Skills.skill1.Value}
+                        skill2 = {props.headState.Skills.skill2.Skill}
+                        skill2Value = {props.headState.Skills.skill2.Value}
+                        skill3 = {props.headState.Skills.skill3.Skill}
+                        skill3Value = {props.headState.Skills.skill3.Value}
+                        skill4 = {props.headState.Skills.skill4.Skill}
+                        skill4Value = {props.headState.Skills.skill4.Value}
+                        defense = {props.headState.Stats.defense}
+                        fireRes = {props.headState.Stats.fireRes}
+                        waterRes = {props.headState.Stats.waterRes}
+                        thunderRes = {props.headState.Stats.thunderRes}
+                        iceRes = {props.headState.Stats.iceRes}
+                        dragonRes = {props.headState.Stats.dragonRes}
+                        />
+
+                        <div className = "row">
+                            <DecorationDisplay
+                            location = "setDisplay"
+                            none = {false}
+                            name = {props.HeadDecos.slot1.Decoration}
+                            skill1 = {props.HeadDecos.slot1.Skill.Name}
+                            skill1Value = {props.HeadDecos.slot1.Skill.Value}
+                            piece = "Head"
+                            slot = "1"
+                            />
+                            <DecorationDisplay
+                            location = "setDisplay"
+                            none = {false}
+                            name = {props.HeadDecos.slot2.Decoration}
+                            skill1 = {props.HeadDecos.slot2.Skill.Name}
+                            skill1Value = {props.HeadDecos.slot2.Skill.Value}
+                            piece = "Head"
+                            slot = "2"
+                            />
+
+                           <DecorationDisplay
+                            location = "setDisplay"
+                            none = {false}
+                            name = {props.HeadDecos.slot3.Decoration}
+                            skill1 = {props.HeadDecos.slot3.Skill.Name}
+                            skill1Value = {props.HeadDecos.slot3.Skill.Value}
+                            piece = "Head"
+                            slot = "3"
+                            />
+                        </div>
+                    </div>
                 </div>
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Torso.png" alt = "Torso"/>
-                    {props.torsoState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
-                key = {torsoLocal.armor_id}
-                none = {false}
-                name = {torsoLocal.name}
-                type = {torsoLocal.type}
-                class = {torsoLocal.class}
-                skill1 = {torsoLocal.skill1}
-                skill2 = {torsoLocal.skill2}
-                skill3 = {torsoLocal.skill3}
-                skill4 = {torsoLocal.skill4}
-                defense = {torsoLocal.defense}
-                fireRes = {torsoLocal.fireRes}
-                waterRes = {torsoLocal.waterRes}
-                thunderRes = {torsoLocal.thunderRes}
-                iceRes = {torsoLocal.iceRes}
-                dragonRes = {torsoLocal.dragonRes}
-                slots = {torsoLocal.slots}
-                rarity = {torsoLocal.rarity}
-                />}
+                    <div className = "armorPieceDisplay">
+                        <ArmorDisplay
+                        none = {false}
+                        name = {props.torsoState.Name}
+                        piece = {props.torsoState.Piece}
+                        rarity = {props.torsoState.Rarity}
+                        slot1 = {props.torsoState.Slots.slot1.Value}
+                        slot2 = {props.torsoState.Slots.slot2.Value}
+                        slot3 = {props.torsoState.Slots.slot3.Value}
+                        skill1 = {props.torsoState.Skills.skill1.Skill}
+                        skill1Value = {props.torsoState.Skills.skill1.Value}
+                        skill2 = {props.torsoState.Skills.skill2.Skill}
+                        skill2Value = {props.torsoState.Skills.skill2.Value}
+                        skill3 = {props.torsoState.Skills.skill3.Skill}
+                        skill3Value = {props.torsoState.Skills.skill3.Value}
+                        skill4 = {props.torsoState.Skills.skill4.Skill}
+                        skill4Value = {props.torsoState.Skills.skill4.Value}
+                        defense = {props.torsoState.Stats.defense}
+                        fireRes = {props.torsoState.Stats.fireRes}
+                        waterRes = {props.torsoState.Stats.waterRes}
+                        thunderRes = {props.torsoState.Stats.thunderRes}
+                        iceRes = {props.torsoState.Stats.iceRes}
+                        dragonRes = {props.torsoState.Stats.dragonRes}
+                        />
+                
+                        <div className = "row">
+                            <DecorationDisplay
+                            location = "setDisplay"
+                            none = {false}
+                            name = {props.TorsoDecos.slot1.Decoration}
+                            skill1 = {props.TorsoDecos.slot1.Skill.Name}
+                            skill1Value = {props.TorsoDecos.slot1.Skill.Value}
+                            piece = "Torso"
+                            slot = "1"
+
+                            />
+                            <DecorationDisplay
+                            location = "setDisplay"
+                            none = {false}
+                            name = {props.TorsoDecos.slot2.Decoration}
+                            skill1 = {props.TorsoDecos.slot2.Skill.Name}
+                            skill1Value = {props.TorsoDecos.slot2.Skill.Value}
+                            piece = "Torso"
+                            slot = "2"
+                            />
+
+                            <DecorationDisplay
+                            location = "setDisplay"
+                            none = {false}
+                            name = {props.TorsoDecos.slot3.Decoration}
+                            skill1 = {props.TorsoDecos.slot3.Skill.Name}
+                            skill1Value = {props.TorsoDecos.slot3.Skill.Value}
+                            piece = "Torso"
+                            slot = "3"
+
+                            />
+                        </div>
+                    </div>
                 </div>
+
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Arms.png" alt = "Arms"/>
-                    {props.armsState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
-                key = {armsLocal.armor_id}
+                    <div className = "armorPieceDisplay">
+                <ArmorDisplay
+                // key = {headState.armor_id}
                 none = {false}
-                name = {armsLocal.name}
-                type = {armsLocal.type}
-                class = {armsLocal.class}
-                skill1 = {armsLocal.skill1}
-                skill2 = {armsLocal.skill2}
-                skill3 = {armsLocal.skill3}
-                skill4 = {armsLocal.skill4}
-                defense = {armsLocal.defense}
-                fireRes = {armsLocal.fireRes}
-                waterRes = {armsLocal.waterRes}
-                thunderRes = {armsLocal.thunderRes}
-                iceRes = {armsLocal.iceRes}
-                dragonRes = {armsLocal.dragonRes}
-                slots = {armsLocal.slots}
-                rarity = {armsLocal.rarity}
-                />}
+                name = {props.armsState.Name}
+                piece = {props.armsState.Piece}
+                rarity = {props.armsState.Rarity}
+                slot1 = {props.armsState.Slots.slot1.Value}
+                slot2 = {props.armsState.Slots.slot2.Value}
+                slot3 = {props.armsState.Slots.slot3.Value}
+                skill1 = {props.armsState.Skills.skill1.Skill}
+                skill1Value = {props.armsState.Skills.skill1.Value}
+                skill2 = {props.armsState.Skills.skill2.Skill}
+                skill2Value = {props.armsState.Skills.skill2.Value}
+                skill3 = {props.armsState.Skills.skill3.Skill}
+                skill3Value = {props.armsState.Skills.skill3.Value}
+                skill4 = {props.armsState.Skills.skill4.Skill}
+                skill4Value = {props.armsState.Skills.skill4.Value}
+                defense = {props.armsState.Stats.defense}
+                fireRes = {props.armsState.Stats.fireRes}
+                waterRes = {props.armsState.Stats.waterRes}
+                thunderRes = {props.armsState.Stats.thunderRes}
+                iceRes = {props.armsState.Stats.iceRes}
+                dragonRes = {props.armsState.Stats.dragonRes}
+                />
+                <div className = "row">
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.ArmsDecos.slot1.Decoration}
+                    skill1 = {props.ArmsDecos.slot1.Skill.Name}
+                    skill1Value = {props.ArmsDecos.slot1.Skill.Value}
+                    piece = "Arms"
+                    slot = "1"
+                    />
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.ArmsDecos.slot2.Decoration}
+                    skill1 = {props.ArmsDecos.slot2.Skill.Name}
+                    skill1Value = {props.ArmsDecos.slot2.Skill.Value}
+                    piece = "Arms"
+                    slot = "2"
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.ArmsDecos.slot3.Decoration}
+                    skill1 = {props.ArmsDecos.slot3.Skill.Name}
+                    skill1Value = {props.ArmsDecos.slot3.Skill.Value}
+                    piece = "Arms"
+                    slot = "3"
+                    />
                 </div>
+                </div>
+                </div>
+
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Waist.png" alt = "Waist"/>
-                    {props.waistState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
-                key = {waistLocal.armor_id}
+                    <div className = "armorPieceDisplay">
+                <ArmorDisplay
+                // key = {headState.armor_id}
                 none = {false}
-                name = {waistLocal.name}
-                type = {waistLocal.type}
-                class = {waistLocal.class}
-                skill1 = {waistLocal.skill1}
-                skill2 = {waistLocal.skill2}
-                skill3 = {waistLocal.skill3}
-                skill4 = {waistLocal.skill4}
-                defense = {waistLocal.defense}
-                fireRes = {waistLocal.fireRes}
-                waterRes = {waistLocal.waterRes}
-                thunderRes = {waistLocal.thunderRes}
-                iceRes = {waistLocal.iceRes}
-                dragonRes = {waistLocal.dragonRes}
-                slots = {waistLocal.slots}
-                rarity = {waistLocal.rarity}
-                />}
+                name = {props.waistState.Name}
+                piece = {props.waistState.Piece}
+                rarity = {props.waistState.Rarity}
+                slot1 = {props.waistState.Slots.slot1.Value}
+                slot2 = {props.waistState.Slots.slot2.Value}
+                slot3 = {props.waistState.Slots.slot3.Value}
+                skill1 = {props.waistState.Skills.skill1.Skill}
+                skill1Value = {props.waistState.Skills.skill1.Value}
+                skill2 = {props.waistState.Skills.skill2.Skill}
+                skill2Value = {props.waistState.Skills.skill2.Value}
+                skill3 = {props.waistState.Skills.skill3.Skill}
+                skill3Value = {props.waistState.Skills.skill3.Value}
+                skill4 = {props.waistState.Skills.skill4.Skill}
+                skill4Value = {props.waistState.Skills.skill4.Value}
+                defense = {props.waistState.Stats.defense}
+                fireRes = {props.waistState.Stats.fireRes}
+                waterRes = {props.waistState.Stats.waterRes}
+                thunderRes = {props.waistState.Stats.thunderRes}
+                iceRes = {props.waistState.Stats.iceRes}
+                dragonRes = {props.waistState.Stats.dragonRes}
+                />
+                <div className = "row">
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.WaistDecos.slot1.Decoration}
+                    skill1 = {props.WaistDecos.slot1.Skill.Name}
+                    skill1Value = {props.WaistDecos.slot1.Skill.Value}
+                    piece = "Waist"
+                    slot = "1"
+                    />
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.WaistDecos.slot2.Decoration}
+                    skill1 = {props.WaistDecos.slot2.Skill.Name}
+                    skill1Value = {props.WaistDecos.slot2.Skill.Value}
+                    piece = "Waist"
+                    slot = "2"
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.WaistDecos.slot3.Decoration}
+                    skill1 = {props.WaistDecos.slot3.Skill.Name}
+                    skill1Value = {props.WaistDecos.slot3.Skill.Value}
+                    piece = "Waist"
+                    slot = "3"
+                    />
                 </div>
+                </div>
+                </div>
+
                 <div className = "setRow">
                     <img className = "armorIcon" src="/images/Legs.png" alt = "Legs"/>
-                    {props.legsState === "None" ? <ArmorDisplay none = {true}/>:<ArmorDisplay
-                key = {legsLocal.armor_id}
+                    <div className = "armorPieceDisplay">
+                <ArmorDisplay
+                // key = {headState.armor_id}
                 none = {false}
-                name = {legsLocal.name}
-                type = {legsLocal.type}
-                class = {legsLocal.class}
-                skill1 = {legsLocal.skill1}
-                skill2 = {legsLocal.skill2}
-                skill3 = {legsLocal.skill3}
-                skill4 = {legsLocal.skill4}
-                defense = {legsLocal.defense}
-                fireRes = {legsLocal.fireRes}
-                waterRes = {legsLocal.waterRes}
-                thunderRes = {legsLocal.thunderRes}
-                iceRes = {legsLocal.iceRes}
-                dragonRes = {legsLocal.dragonRes}
-                slots = {legsLocal.slots}
-                rarity = {legsLocal.rarity}
-                />}
+                name = {props.legsState.Name}
+                piece = {props.legsState.Piece}
+                rarity = {props.legsState.Rarity}
+                slot1 = {props.legsState.Slots.slot1.Value}
+                slot2 = {props.legsState.Slots.slot2.Value}
+                slot3 = {props.legsState.Slots.slot3.Value}
+                skill1 = {props.legsState.Skills.skill1.Skill}
+                skill1Value = {props.legsState.Skills.skill1.Value}
+                skill2 = {props.legsState.Skills.skill2.Skill}
+                skill2Value = {props.legsState.Skills.skill2.Value}
+                skill3 = {props.legsState.Skills.skill3.Skill}
+                skill3Value = {props.legsState.Skills.skill3.Value}
+                skill4 = {props.legsState.Skills.skill4.Skill}
+                skill4Value = {props.legsState.Skills.skill4.Value}
+                defense = {props.legsState.Stats.defense}
+                fireRes = {props.legsState.Stats.fireRes}
+                waterRes = {props.legsState.Stats.waterRes}
+                thunderRes = {props.legsState.Stats.thunderRes}
+                iceRes = {props.legsState.Stats.iceRes}
+                dragonRes = {props.legsState.Stats.dragonRes}
+                />
+                <div className = "row">
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.LegsDecos.slot1.Decoration}
+                    skill1 = {props.LegsDecos.slot1.Skill.Name}
+                    skill1Value = {props.LegsDecos.slot1.Skill.Value}
+                    piece = "Legs"
+                    slot = "1"
+                    />
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.LegsDecos.slot2.Decoration}
+                    skill1 = {props.LegsDecos.slot2.Skill.Name}
+                    skill1Value = {props.LegsDecos.slot2.Skill.Value}
+                    piece = "Legs"
+                    slot = "2"
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.LegsDecos.slot3.Decoration}
+                    skill1 = {props.LegsDecos.slot3.Skill.Name}
+                    skill1Value = {props.LegsDecos.slot3.Skill.Value}
+                    piece = "Legs"
+                    slot = "3"
+                    />
+                </div>
+                </div>
+                </div>
+
+                <div className = "setRow">
+                    <img className = "armorIcon" src="/images/Talisman_Icon_White.png" alt = "Legs"/>
+                    <div className = "armorPieceDisplay">
+                <TalismanDisplay
+                // key = {headState.armor_id}
+                none = {false}
+                location = "Builder"
+                name = {props.talismanState.Name}
+                piece = {props.talismanState.Piece}
+                rarity = {props.talismanState.Rarity}
+                slot1 = {props.talismanState.Slots.slot1.value}
+                slot2 = {props.talismanState.Slots.slot2.value}
+                slot3 = {props.talismanState.Slots.slot3.value}
+                skill1 = {props.talismanState.Skills.skill1.Skill}
+                skill1Value = {props.talismanState.Skills.skill1.Value}
+                skill2 = {props.talismanState.Skills.skill2.Skill}
+                skill2Value = {props.talismanState.Skills.skill2.Value}
+                />
+                <div className = "row">
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.TalismanDecos.slot1.Decoration}
+                    skill1 = {props.TalismanDecos.slot1.Skill.Name}
+                    skill1Value = {props.TalismanDecos.slot1.Skill.Value}
+                    piece = "Talisman"
+                    slot = "1"
+                    />
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.TalismanDecos.slot2.Decoration}
+                    skill1 = {props.TalismanDecos.slot2.Skill.Name}
+                    skill1Value = {props.TalismanDecos.slot2.Skill.Value}
+                    piece = "Talisman"
+                    slot = "2"
+                    />
+
+                    <DecorationDisplay
+                    location = "setDisplay"
+                    none = {false}
+                    name = {props.TalismanDecos.slot3.Decoration}
+                    skill1 = {props.TalismanDecos.slot3.Skill.Name}
+                    skill1Value = {props.TalismanDecos.slot3.Skill.Value}
+                    piece = "Talisman"
+                    slot = "3"
+                    />
+                </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -204,7 +388,12 @@ function mapStateToProps(state){
         waistState: state.armor.Waist,
         legsState: state.armor.Legs,
         talismanState: state.armor.Talisman,
-        HeadDecos: state.deco.HeadDecos
+        HeadDecos: state.deco.HeadDecos,
+        TorsoDecos: state.deco.TorsoDecos,
+        ArmsDecos: state.deco.ArmsDecos,
+        WaistDecos: state.deco.WaistDecos,
+        LegsDecos: state.deco.LegsDecos,
+        TalismanDecos: state.deco.TalismanDecos
     }
 }
 

@@ -2,6 +2,8 @@ import {React, useState} from "react"
 import "./decorationSearcher.css"
 import axios from "axios"
 import DecorationDisplay from "../decorationDisplay/decorationDisplay"
+import skills from "../resources/skills"
+
 
 const DecorationSearcher = () => {
     const [name, setName] = useState("")
@@ -10,29 +12,28 @@ const DecorationSearcher = () => {
     
     async function searchDecoration(){
             let results = await axios.get(`/decoration/search?name=${name}&skill=${skill}`)
-            //console.log(results)
             setSearchResults(results.data.data)
     }
 
     return(
         <div>
-            <div className = "searchBox">
+            <div className = "decoSearchBoxDisplay">
                 <div>
-                <div className = "row">
-                    <div className = "searchSpacer">Search by Name:</div>
+                    <div>Decoration Name:</div>
                     <input type = "text" value = {name}
                     onChange = {(evt)=>{setName(evt.target.value)}}></input>
+                    </div>
+                <div>
+                    <div>Skill:</div>
+                    <select value = {skill} onChange = {(evt)=>{setSkill(evt.target.value)}}>
+                        <option value = ""></option>
+                        {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
+                    </select>
+                
                 </div>
-
-                <div className = "row">
-                    <div className = "searchSpacer">Search by Skill: </div>
-                    <input type = "text" value = {skill}
-                    onChange = {(evt)=>{setSkill(evt.target.value)}}></input>
-                </div>
-                </div>
-                <button className = "searchButton" onClick = {()=>{searchDecoration()}}>Search</button>
+                <button style = {{marginLeft: "5px", width: "180px"}}onClick = {()=>{searchDecoration()}}>Search</button>
             </div>
-            <div className = "SearchDisplay">
+            <div className = "SearchDecoDisplay">
                 {searchResults.length > 0 && 
                 searchResults.map((v)=>
                 <DecorationDisplay
@@ -40,8 +41,8 @@ const DecorationSearcher = () => {
                 none = {false}
                 name = {v.name}
                 skill1 = {v.skill1}
-                skill2 = {v.skill2}
-                slots = {v.slots}
+                skill1Value = {v.skill1Value}
+                slot = {v.slot}
                 />)}
             </div>
         </div>

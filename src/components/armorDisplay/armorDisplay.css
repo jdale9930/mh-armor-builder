@@ -1,16 +1,39 @@
 .armorDisplayContainer{
     display: flex;
     flex-flow: row wrap;
-    background-color:beige;
+    background-color:rgba(245, 245, 220, 0.8);
     border: 2px solid black;
     color: black;
     height: 100px;
+}
+
+.armorNameDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: rgba(73, 73, 63, 0.9);
+    border: 2px solid black;
+    color: white;
+    justify-content: left;
+    font-size: 22px;
+    line-height: 28px;
+    width: 511px;
+}
+
+.armorName{
+    width: 300px;
+    margin-left: 5px;
+}
+
+.collapseButton{
+    width: 75px;
+    margin: auto;
 }
 
 .skillDisplay{
     width: 190px;
     border-left: 1px solid black;
     border-right: 1px solid black;
+    background-color: none;
 
 }
 
@@ -25,27 +48,30 @@
     display: flex;
     flex-flow: row wrap;
     border-bottom: 1px solid black;
-    /* padding: 2px; */
-    background-color: rgb(247, 247, 236);
+    padding-left: 2px;
+    background-color: rgba(247, 247, 236, 0.9);
+    width: 180px;
     height: 9px;
     line-height: 9px;
 }
 
 .skillRow1{
-    width: 160px;
+    width: 152px;
 }
 
 .skillRow2{
     text-align: right;
-    width: 18px;
+    width: 28px;
 }
 
 .displayIcon{
     width: 25px;
-    margin: auto;
+    border: 2px solid black;
+    background-color: white;
 }
 
 .equipButton{
     flex-basis: 70%;
-    margin:auto;
+    margin: auto;
+    height: 50px;
 }

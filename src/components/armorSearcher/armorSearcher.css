@@ -1,13 +1,21 @@
-.searchBox{
+.armorSearchBoxDisplay{
     display: flex;
     flex-flow: row wrap;
-    background-color: azure;
+    justify-content:space-evenly;
+    background-color: rgba(247, 247, 236, 0.9);
+    width: 500px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
     color: black;
     padding: 5px;
-    width: 520px;
 }
 
 .SearchDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    width: 520px;
+    justify-content: center;
     overflow-y: scroll;
     height: 400px;
 }

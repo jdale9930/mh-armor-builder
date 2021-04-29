@@ -6,10 +6,8 @@ const DecorationMaker = () =>{
     const [error, setError] = useState("")
     const [name, setName] = useState("")
     const [skill1, setSkill1] = useState("")
-    const [skill1Val, setSkill1Val] = useState("")
-    const [skill2, setSkill2] = useState("")
-    const [skill2Val, setSkill2Val] = useState("")
-    const [slots, setSlots] = useState("1")
+    const [skill1Value, setSkill1Value] = useState(1)
+    const [slot, setSlot] = useState(1)
 
     async function submit(data){
         setError("")
@@ -41,23 +39,12 @@ const DecorationMaker = () =>{
                     <option value = ""></option>
                     {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
                 </select>
-                <input type ="text" value = {skill1Val} onChange ={(evt)=>{setSkill1Val(evt.target.value)}}></input>
-                <button onClick ={()=>{setSkill1(""); setSkill1Val("")}}>Clear Skill 1</button>
+                <input type ="text" value = {skill1Value} onChange ={(evt)=>{setSkill1Value(evt.target.value)}}></input>
+                <button onClick ={()=>{setSkill1(""); setSkill1Value("")}}>Clear Skill 1</button>
             </div>
-
-            <div>
-                Skill 2
-                <select value = {skill2} onChange = {(evt)=>{setSkill2(evt.target.value)}}>
-                    <option value = ""></option>
-                    {skills.map((v)=><option value = {v} key = {v.name}>{v}</option>)}
-                </select>
-                <input type ="text" value = {skill2Val} onChange ={(evt)=>{setSkill2Val(evt.target.value)}}></input>
-                <button onClick ={()=>{setSkill2(""); setSkill2Val("")}}>Clear Skill 2</button>
-            </div>
-
             <div>
                 Slots:
-                <select value = {slots} onChange = {(evt)=>{setSlots(evt.target.value)}}>
+                <select value = {slot} onChange = {(evt)=>{setSlot(evt.target.value)}}>
                     <option value = "1">1</option>
                     <option value = "2">2</option>
                     <option value = "3">3</option>
@@ -67,12 +54,13 @@ const DecorationMaker = () =>{
             <div>
                 <button onClick = {()=>{submit({
                     name: name,
-                    skill1: skill1 + ":" + skill1Val,
-                    skill2: skill2 + ":" + skill2Val,
-                    slots: slots,
+                    skill1: skill1,
+                    skill1Value: skill1Value,
+                    slot: slot,
                 })
                 }}>Submit</button>
             </div>
+    
         </div>
     )
 }

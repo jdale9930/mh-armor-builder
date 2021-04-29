@@ -1,0 +1,79 @@
+.myTalismansDisplay{
+    display: flex;
+    flex-flow: column wrap;
+    color: white
+}
+
+.talismanDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    background-color:rgba(245, 245, 220, 0.8);
+    border: 2px solid black;
+    color: black;
+    height: 100px;
+    width:511px;
+}
+
+.talismanNameDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: rgba(73, 73, 63, 0.9);
+    border: 2px solid black;
+    color: white;
+    justify-content: left;
+    font-size: 22px;
+    line-height: 28px;
+    width: 511px;
+}
+
+.talismanSkillDisplay{
+    width: 190px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-top: 5px;
+}
+
+.talismanMakerDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    background-color:rgba(245, 245, 220, 0.8);
+    border: 2px solid black;
+    color: black;
+    max-width: 511px;
+    margin: auto;
+    padding: 5px;
+}
+
+.talismanMakerInputBox{
+    background-color: rgba(247, 247, 236, 0.9);
+    height: 300px;
+    width: 300px;
+    margin: auto;
+    padding: 5px;
+}
+
+.viewButton{
+    height: 40px;
+    width: 150px;
+    margin: auto;
+}
+
+.talismanSearchDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-evenly;
+    background-color: rgba(247, 247, 236, 0.9);
+    width: 500px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+    padding: 5px;
+}
+
+.talismanSearchMain{
+    display: flex;
+    flex-flow: column wrap;
+    margin: auto;
+    border: "1px solid black";
+    width: 520px;
+}

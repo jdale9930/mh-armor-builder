@@ -1,17 +1,47 @@
 .armorDisplay{
     display: flex;
-    flex-flow: column wrap;
-    flex-basis: 40%;
+    flex-flow: row wrap;
+    width: 600px;
+    height: 490px;
+    overflow-y: scroll;
 }
 
 .armorIcon{
     height: 75px;
     width: 75px;
-    padding-top: 15px;
+    padding-top: 5px;
 
 }
 
 .setBuilderMain{
     display: flex;
     flex-flow: row wrap;
+}
+
+.saveArmorSetDisplay{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content:space-evenly;
+    background-color: rgba(247, 247, 236, 0.9);
+    width: 500px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+    padding: 5px;
+}
+
+textarea{
+    resize: none;
+}
+
+.loadClear{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 5px;
+    background-color: rgba(247, 247, 236, 0.9);
+    color: black;
+    padding: 3px;
+    width: 350px;
+
 }

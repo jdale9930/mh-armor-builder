@@ -1,0 +1,15 @@
+.loginRoot{
+    display: flex;
+    flex-flow: column wrap;
+    width: 500px;
+    height: 500px;
+    background-color:rgba(245, 245, 220, 0.8);
+    margin: auto;
+    color: black;
+
+}
+
+.loginTitle{
+    text-align: center;
+    font-size: 32px;
+}

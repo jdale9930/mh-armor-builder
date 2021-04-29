@@ -1,0 +1,25 @@
+
+.armorsetNameDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    background-color: rgba(73, 73, 63, 0.9);
+    border: 2px solid black;
+    color: white;
+    justify-content: left;
+    font-size: 22px;
+    line-height: 28px;
+    width: 511px;
+}
+.armorsetDisplay{
+    display: flex;
+    flex-flow: row wrap;
+    background-color:rgba(245, 245, 220, 0.8);
+    border: 2px solid black;
+    color: black;
+    padding: 5px;
+    width: 502px;
+}
+.armorsetName{
+    width: 380px;
+    margin-left: 5px;
+}
